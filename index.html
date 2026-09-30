@@ -1,0 +1,2678 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2F9BF4">
+<title>Aspirasi Digital MPK Mahardika SMAN 1 Cipari</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===================== TOKEN WARNA ===================== */
+:root{
+  --biru-1:#2F9BF4; --biru-2:#1E7FD1;
+  --kuning:#FFD23F; --kuning-soft:rgba(255,210,63,.28);
+  --krem:#FBF6EC; --navy:#1F3A3D; --hijau:#3FB871;
+  --hold:#E8B92E; --proses:#5DADE2; --tolak:#C97A7A;
+  --accent:#2F9BF4;
+  --text:#1F3A3D;
+  --text-soft:rgba(31,58,61,.72);
+  --glass-1:rgba(255,255,255,.46);
+  --glass-2:rgba(255,255,255,.12);
+  --glass-border:rgba(255,255,255,.6);
+  --card-bg:rgba(255,255,255,.62);
+  --card-border:rgba(255,255,255,.7);
+  --shadow-1:0 8px 24px rgba(31,58,61,.10), 0 2px 6px rgba(31,58,61,.06);
+  --shadow-2:0 20px 50px rgba(31,58,61,.18), 0 6px 16px rgba(31,58,61,.10);
+  --radius-xl:32px; --radius-lg:24px; --radius-md:18px; --radius-sm:12px;
+  --nav-h:64px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --krem:#0E1D21;
+    --text:#EAF4F6;
+    --text-soft:rgba(234,244,246,.74);
+    --navy:#DCEBEE;
+    --glass-1:rgba(255,255,255,.10);
+    --glass-2:rgba(255,255,255,.035);
+    --glass-border:rgba(255,255,255,.20);
+    --card-bg:rgba(255,255,255,.07);
+    --card-border:rgba(255,255,255,.14);
+    --shadow-1:0 8px 24px rgba(0,0,0,.35);
+    --shadow-2:0 20px 50px rgba(0,0,0,.5);
+  }
+}
+
+/* ===================== DASAR ===================== */
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  color:var(--text);
+  background:var(--krem);
+  min-height:100vh;
+  overflow-x:hidden;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+body.locked{overflow:hidden;height:100vh}
+h1,h2,h3,h4,.f-red{font-family:'Fredoka','Inter',sans-serif;font-weight:700;letter-spacing:-.01em;margin:0}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+a{color:var(--biru-2)}
+:focus-visible{outline:3px solid var(--biru-1);outline-offset:3px;border-radius:8px}
+img{max-width:100%;display:block}
+
+/* ===================== BACKGROUND ===================== */
+.bg-wrap{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.aurora-preset{position:absolute;inset:0;opacity:0;transition:opacity .9s ease}
+.aurora-preset.on{opacity:1}
+.aurora{position:absolute;border-radius:50%;will-change:transform}
+.a1{width:min(70vw,620px);aspect-ratio:1;left:-14vw;top:-12vh;
+    background:radial-gradient(circle,var(--c1) 0%,transparent 70%)}
+.a2{width:min(66vw,560px);aspect-ratio:1;right:-16vw;top:18vh;
+    background:radial-gradient(circle,var(--c2) 0%,transparent 70%)}
+.a3{width:min(80vw,720px);aspect-ratio:1;left:12vw;bottom:-24vh;
+    background:radial-gradient(circle,var(--c3) 0%,transparent 70%)}
+.aurora-preset{opacity:0}
+.aurora-preset .aurora{opacity:.34}
+
+.doodle-field{position:absolute;inset:0;overflow:hidden}
+.doodle{position:absolute;color:var(--navy);opacity:.16;will-change:transform;
+        transform:translate3d(0,0,0) rotate(var(--r,0deg));pointer-events:none}
+.doodle svg{width:100%;height:100%;display:block;stroke:currentColor;fill:none;
+            stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.doodle.l0{opacity:.11}
+.doodle.l1{opacity:.15}
+.doodle.l2{opacity:.19}
+.doodle.l0 svg{filter:blur(.6px)}
+html.lite .doodle.l0 svg{filter:none}
+html.lite .doodle{opacity:.13}
+html.lite .aurora-preset .aurora{opacity:.22}
+
+/* ===================== KACA CAIR ===================== */
+.glass{
+  position:relative;
+  background:linear-gradient(150deg,var(--glass-1),var(--glass-2));
+  border:1px solid var(--glass-border);
+  -webkit-backdrop-filter:blur(18px) saturate(1.75);
+  backdrop-filter:blur(18px) saturate(1.75);
+  box-shadow:var(--shadow-1),
+             inset 0 1px 0 rgba(255,255,255,.7),
+             inset 1px 0 0 rgba(255,255,255,.35);
+  overflow:hidden;
+}
+html.lite .glass{-webkit-backdrop-filter:blur(8px) saturate(1.4);backdrop-filter:blur(8px) saturate(1.4)}
+.glass::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(220px circle at var(--x,50%) var(--y,0%),
+              rgba(255,255,255,.55),rgba(255,255,255,.12) 42%,transparent 70%);
+  opacity:0;transition:opacity .6s ease;
+}
+.glass.lit::after{opacity:1;transition:opacity .2s ease}
+html.liquid-ok .nav-pill,
+html.liquid-ok .id-card{
+  -webkit-backdrop-filter:url(#liquid) blur(6px) saturate(1.9);
+  backdrop-filter:url(#liquid) blur(6px) saturate(1.9);
+}
+
+/* ===================== INTRO ===================== */
+.intro{
+  position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:22px;text-align:center;padding:28px;
+  background:radial-gradient(circle at 50% 34%,rgba(47,155,244,.30),transparent 62%),
+             radial-gradient(circle at 20% 80%,rgba(255,210,63,.28),transparent 60%),
+             radial-gradient(circle at 82% 74%,rgba(63,184,113,.24),transparent 60%),
+             var(--krem);
+  transition:opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1);
+  cursor:pointer;
+}
+.intro.out{opacity:0;transform:scale(1.06);pointer-events:none}
+.intro-logo{width:130px;height:130px;object-fit:contain;
+  filter:drop-shadow(0 12px 28px rgba(31,58,61,.22));
+  animation:introPop .8s cubic-bezier(.22,1.4,.4,1) both}
+@keyframes introPop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+.intro h1{font-size:clamp(22px,6vw,34px);max-width:22ch;color:var(--navy)}
+.intro p{margin:0;color:var(--text-soft);max-width:32ch}
+.tap-hint{
+  margin-top:8px;padding:12px 24px;border-radius:999px;font-weight:600;
+  color:var(--navy);background:linear-gradient(150deg,rgba(255,255,255,.6),rgba(255,255,255,.24));
+  border:1px solid rgba(255,255,255,.7);
+  animation:blink 2.1s ease-in-out infinite;
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+}
+@keyframes blink{0%,100%{opacity:.62}50%{opacity:1}}
+
+/* ===================== HEADER + NAV ===================== */
+.top-wrap{position:fixed;top:0;left:0;right:0;z-index:90;display:flex;justify-content:center;
+          padding:calc(env(safe-area-inset-top,0px) + 10px) 12px 0;pointer-events:none}
+.nav-pill{
+  pointer-events:auto;display:flex;gap:4px;padding:6px;border-radius:999px;position:relative;
+  max-width:100%;overflow-x:auto;scrollbar-width:none;
+}
+.nav-pill::-webkit-scrollbar{display:none}
+.nav-ind{
+  position:absolute;top:6px;bottom:6px;left:0;width:0;border-radius:999px;z-index:0;
+  background:linear-gradient(150deg,rgba(255,255,255,.85),rgba(255,255,255,.42));
+  box-shadow:0 4px 14px rgba(31,58,61,.14), inset 0 1px 0 rgba(255,255,255,.9);
+  transition:transform .45s cubic-bezier(.34,1.56,.5,1), width .45s cubic-bezier(.34,1.56,.5,1);
+  will-change:transform,width;
+}
+.tab-btn{
+  position:relative;z-index:1;display:flex;align-items:center;gap:7px;
+  padding:10px 16px;border-radius:999px;font-weight:600;font-size:14px;
+  color:var(--text-soft);white-space:nowrap;transition:color .25s ease;min-height:44px;
+}
+.tab-btn .ti{font-size:16px;line-height:1}
+.tab-btn[aria-selected="true"]{color:var(--navy)}
+.tab-btn.locked-item{color:var(--text-soft);opacity:.55}
+.tab-btn.shake{animation:shake .45s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}18%{transform:translateX(-5px)}
+  38%{transform:translateX(5px)}58%{transform:translateX(-4px)}78%{transform:translateX(4px)}}
+.lock-pop{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-size:20px;opacity:0;pointer-events:none}
+.lock-pop.go{animation:lockPop .8s ease}
+@keyframes lockPop{0%{opacity:0;transform:translate(-50%,-30%) scale(.6)}
+  30%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}
+  70%{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  100%{opacity:0;transform:translate(-50%,-70%) scale(.9)}}
+
+/* progress bar scroll */
+.scroll-bar{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--biru-1),var(--kuning),var(--hijau));
+  transition:width .12s linear;transform-origin:left center;pointer-events:none}
+
+/* ===================== LAYOUT ===================== */
+main{position:relative;z-index:10;padding:calc(env(safe-area-inset-top,0px) + 92px) 16px 140px}
+.panels{display:grid;max-width:980px;margin:0 auto}
+.tabpanel{
+  grid-area:1/1;opacity:0;visibility:hidden;pointer-events:none;
+  transform:translate3d(var(--enter-x,0px),0,0) scale(.985);
+  transition:opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
+}
+.tabpanel.active{
+  opacity:1;visibility:visible;pointer-events:auto;transform:translate3d(0,0,0) scale(1);
+  transition:opacity .4s cubic-bezier(.22,1,.36,1), transform .4s cubic-bezier(.22,1,.36,1), visibility 0s;
+}
+.tabpanel.leaving{
+  opacity:0;visibility:hidden;pointer-events:none;
+  transform:translate3d(var(--leave-x,0px),0,0) scale(.98);
+  transition:opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
+}
+.reveal{opacity:0;transform:translateY(14px)}
+.tabpanel.active .reveal{animation:revealUp .5s cubic-bezier(.22,1,.36,1) forwards;
+  animation-delay:var(--d,0ms)}
+@keyframes revealUp{to{opacity:1;transform:none}}
+
+/* ===================== BERANDA ===================== */
+.logo-row{display:flex;justify-content:center;align-items:center;gap:18px;margin-bottom:22px}
+.logo-row img{height:clamp(52px,15vw,78px);width:auto;object-fit:contain;
+  filter:drop-shadow(0 6px 18px rgba(31,58,61,.16))}
+.hero{text-align:center;margin-bottom:14px}
+.hero h1{
+  font-size:clamp(20px,5.6vw,34px);line-height:1.18;color:var(--navy);
+  text-shadow:0 1px 0 rgba(255,255,255,.5);
+}
+.hero p{margin:12px auto 0;max-width:36ch;color:var(--text-soft);font-size:15px}
+
+/* Kartu ID gantung */
+.stage{position:relative;height:min(58vh,440px);min-height:330px;margin:6px 0 4px;
+       display:flex;justify-content:center;align-items:flex-start;touch-action:none}
+.lanyard{position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:2px;height:74px;
+  background:linear-gradient(180deg,rgba(31,58,61,.05),rgba(31,58,61,.35));
+  border-radius:2px}
+.lanyard::before{content:'';position:absolute;top:-9px;left:50%;transform:translateX(-50%);
+  width:20px;height:20px;border:2px solid rgba(31,58,61,.35);border-radius:50%;
+  background:linear-gradient(150deg,rgba(255,255,255,.7),rgba(255,255,255,.25))}
+.id-wrap{position:absolute;top:66px;left:50%;transform:translateX(-50%);
+  transform-origin:top center;will-change:transform;touch-action:none;cursor:grab}
+.id-wrap.grabbing{cursor:grabbing}
+.id-card{
+  width:min(78vw,300px);padding:22px 20px 24px;border-radius:26px;
+  display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;
+  background:linear-gradient(150deg,rgba(255,255,255,.55),rgba(255,255,255,.16));
+  border:1px solid var(--glass-border);
+  box-shadow:var(--shadow-2), inset 0 1px 0 rgba(255,255,255,.8);
+}
+.id-hole{width:46px;height:9px;border-radius:999px;background:rgba(31,58,61,.14);
+  box-shadow:inset 0 1px 3px rgba(31,58,61,.25)}
+.id-card img{width:74px;height:74px;object-fit:contain;margin-top:4px}
+.id-card .id-title{font-family:'Fredoka',sans-serif;font-size:19px;color:var(--navy);line-height:1.25}
+.id-card .id-sub{font-size:12.5px;color:var(--text-soft)}
+.id-card .id-strip{width:100%;height:6px;border-radius:999px;margin-top:6px;
+  background:linear-gradient(90deg,var(--biru-1),var(--kuning),var(--hijau))}
+.drag-hint{font-size:11.5px;color:var(--text-soft);letter-spacing:.02em}
+
+/* Statistik */
+.stats{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:8px}
+.stat{
+  flex:1 1 150px;max-width:230px;padding:20px 18px;border-radius:var(--radius-lg);
+  text-align:center;background:var(--card-bg);border:1px solid var(--card-border);
+  box-shadow:var(--shadow-1), inset 0 1px 0 rgba(255,255,255,.6);
+}
+html:not(.lite) .stat{-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.stat .num{font-family:'Fredoka',sans-serif;font-size:clamp(30px,9vw,46px);line-height:1;color:var(--biru-2)}
+.stat.selesai .num{color:var(--hijau)}
+.stat .lab{margin-top:6px;font-size:13px;color:var(--text-soft);font-weight:500}
+
+/* ===================== KARTU UMUM ===================== */
+.card{
+  border-radius:var(--radius-lg);padding:18px;
+  background:var(--card-bg);border:1px solid var(--card-border);
+  box-shadow:var(--shadow-1), inset 0 1px 0 rgba(255,255,255,.55);
+}
+.section-title{font-family:'Fredoka',sans-serif;font-size:19px;color:var(--navy);margin:0 0 12px}
+
+/* segmented */
+.seg{
+  position:relative;display:flex;gap:4px;padding:5px;border-radius:999px;margin-bottom:18px;
+  background:linear-gradient(150deg,var(--glass-1),var(--glass-2));
+  border:1px solid var(--glass-border);box-shadow:var(--shadow-1);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+}
+.seg-ind{position:absolute;top:5px;bottom:5px;left:0;border-radius:999px;z-index:0;
+  background:linear-gradient(150deg,rgba(255,255,255,.9),rgba(255,255,255,.5));
+  box-shadow:0 3px 12px rgba(31,58,61,.14);
+  transition:transform .4s cubic-bezier(.34,1.4,.5,1), width .4s cubic-bezier(.34,1.4,.5,1)}
+.seg-btn{position:relative;z-index:1;flex:1;padding:11px 10px;border-radius:999px;
+  font-weight:600;font-size:14px;color:var(--text-soft);transition:color .25s;min-height:44px}
+.seg-btn[aria-selected="true"]{color:var(--navy)}
+
+/* form */
+textarea{
+  width:100%;min-height:140px;resize:vertical;padding:14px;border-radius:var(--radius-md);
+  border:1px solid var(--card-border);background:rgba(255,255,255,.55);
+  color:var(--text);line-height:1.55;transition:border-color .2s, box-shadow .2s;
+}
+@media (prefers-color-scheme: dark){textarea{background:rgba(255,255,255,.06)}}
+textarea:focus{outline:none;border-color:var(--biru-1);box-shadow:0 0 0 3px rgba(47,155,244,.22)}
+.counter{display:flex;justify-content:space-between;align-items:center;gap:10px;
+  margin-top:8px;font-size:12.5px;color:var(--text-soft);flex-wrap:wrap}
+.counter .warn{color:var(--tolak);font-weight:600}
+.note{display:flex;gap:8px;align-items:flex-start;margin:14px 0 16px;padding:12px 14px;
+  border-radius:var(--radius-sm);font-size:13px;color:var(--text-soft);
+  background:rgba(47,155,244,.10);border:1px solid rgba(47,155,244,.22)}
+
+/* tombol */
+.btn{
+  position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;
+  gap:8px;padding:13px 22px;border-radius:999px;font-weight:700;font-size:15px;min-height:46px;
+  transition:transform .16s cubic-bezier(.34,1.5,.5,1), box-shadow .16s, opacity .2s;
+  box-shadow:0 6px 16px rgba(31,58,61,.16), inset 0 1px 0 rgba(255,255,255,.6);
+}
+.btn:active{transform:translateY(2px);box-shadow:0 2px 8px rgba(31,58,61,.14)}
+.btn[disabled]{opacity:.55;cursor:not-allowed;transform:none}
+.btn-primary{background:linear-gradient(150deg,#FFDD6B,var(--kuning));color:#4A3A00}
+.btn-blue{background:linear-gradient(150deg,var(--biru-1),var(--biru-2));color:#fff}
+.btn-ghost{background:linear-gradient(150deg,var(--glass-1),var(--glass-2));
+  border:1px solid var(--glass-border);color:var(--navy);box-shadow:var(--shadow-1)}
+.btn-sm{padding:8px 14px;font-size:13px;min-height:38px;border-radius:999px}
+.btn .glow{position:absolute;inset:0;pointer-events:none;opacity:0;
+  background:radial-gradient(60px circle at var(--x,50%) var(--y,50%),
+    rgba(255,255,255,.85),transparent 70%);
+  transform:scale(.2);transition:opacity .6s ease, transform .6s ease}
+.btn.glow-on .glow{opacity:1;transform:scale(2.6);transition:opacity .35s ease, transform .35s ease}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap}
+@media (hover:hover){
+  .btn-primary:hover,.btn-blue:hover{transform:translateY(-1px)}
+  .btn-ghost:hover{background:rgba(255,255,255,.6)}
+}
+
+/* daftar aspirasi */
+.list{display:flex;flex-direction:column;gap:12px;margin-top:4px}
+.item{
+  border-radius:var(--radius-lg);padding:16px 16px 14px;
+  background:var(--card-bg);border:1px solid var(--card-border);
+  box-shadow:0 4px 14px rgba(31,58,61,.07), inset 0 1px 0 rgba(255,255,255,.55);
+  animation:itemIn .42s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes itemIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.item-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px;flex-wrap:wrap}
+.pill{padding:4px 11px;border-radius:999px;font-size:11.5px;font-weight:700;letter-spacing:.01em}
+.pill.Hold{background:var(--kuning-soft);color:#7A5A00}
+.pill.Diproses{background:rgba(93,173,226,.25);color:#1B4F76}
+.pill.Selesai{background:rgba(63,184,113,.24);color:#1B5C36}
+.pill.Ditolak{background:rgba(201,122,122,.24);color:#6E2F2F}
+@media (prefers-color-scheme: dark){
+  .pill.Hold{color:#FFD98A}.pill.Diproses{color:#A8D6F5}
+  .pill.Selesai{color:#9BE3BB}.pill.Ditolak{color:#F0B4B4}
+}
+.item-date{font-size:12px;color:var(--text-soft)}
+.item-isi{margin:0;white-space:pre-wrap;word-break:break-word;font-size:15px;line-height:1.6}
+.item-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px}
+.vote-btn{
+  display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:999px;
+  font-weight:700;font-size:14px;min-height:42px;
+  background:linear-gradient(150deg,rgba(47,155,244,.16),rgba(47,155,244,.08));
+  border:1px solid rgba(47,155,244,.3);color:var(--biru-2);
+  transition:transform .16s cubic-bezier(.34,1.6,.5,1), background .2s;
+}
+.vote-btn:active{transform:scale(.94)}
+.vote-btn.voted{background:linear-gradient(150deg,var(--biru-1),var(--biru-2));color:#fff;border-color:transparent}
+.vote-btn.voted .up{transform:translateY(-1px)}
+.vote-num{display:inline-block;min-width:1.2ch;text-align:center}
+.vote-num.bounce{animation:voteBounce .42s cubic-bezier(.34,1.6,.5,1)}
+@keyframes voteBounce{0%{transform:translateY(0) scale(1)}40%{transform:translateY(-5px) scale(1.24)}
+  100%{transform:translateY(0) scale(1)}}
+.item-actions{display:flex;align-items:center;gap:8px}
+select.status-sel{
+  padding:8px 10px;border-radius:var(--radius-sm);font-size:13px;font-weight:600;
+  border:1px solid var(--card-border);background:rgba(255,255,255,.7);color:var(--text);
+  min-height:38px;
+}
+@media (prefers-color-scheme: dark){select.status-sel{background:rgba(255,255,255,.08)}}
+
+/* skeleton */
+.skel{border-radius:var(--radius-lg);padding:16px;background:var(--card-bg);
+  border:1px solid var(--card-border);overflow:hidden;position:relative}
+.skel::after{content:'';position:absolute;inset:0;transform:translateX(-100%);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);
+  animation:shimmer 1.4s infinite}
+@keyframes shimmer{100%{transform:translateX(100%)}}
+.sk-line{height:12px;border-radius:6px;background:rgba(31,58,61,.10);margin-bottom:10px}
+.sk-line.w40{width:40%}.sk-line.w70{width:70%}.sk-line.w90{width:90%}
+
+.empty{text-align:center;padding:38px 20px;color:var(--text-soft)}
+.empty .big{font-size:38px;margin-bottom:8px}
+
+/* ===================== EVENT ===================== */
+.event-card{margin-bottom:14px;overflow:hidden}
+.event-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.event-head h3{font-size:17px;color:var(--navy);display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .42s cubic-bezier(.22,1,.36,1)}
+.acc-body.open{grid-template-rows:1fr}
+.acc-inner{overflow:hidden}
+.acc-pad{padding-top:16px}
+.badge{padding:4px 11px;border-radius:999px;font-size:11.5px;font-weight:700}
+.badge.open{background:rgba(63,184,113,.24);color:#1B5C36}
+.badge.lock{background:rgba(120,130,135,.24);color:var(--text-soft)}
+@media (prefers-color-scheme: dark){.badge.open{color:#9BE3BB}}
+.inline-edit{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.inline-edit input{flex:1 1 160px;padding:10px 12px;border-radius:var(--radius-sm);
+  border:1px solid var(--card-border);background:rgba(255,255,255,.6);color:var(--text);min-height:40px}
+@media (prefers-color-scheme: dark){.inline-edit input{background:rgba(255,255,255,.08)}}
+
+/* ===================== TENTANG ===================== */
+.steps{display:flex;flex-direction:column;gap:20px;margin-top:6px}
+.step{display:flex;gap:16px;align-items:flex-start}
+.step-art{flex:0 0 76px;width:76px;height:76px;border-radius:22px;display:grid;place-items:center;
+  background:linear-gradient(150deg,rgba(255,255,255,.6),rgba(255,255,255,.18));
+  border:1px solid var(--glass-border);box-shadow:var(--shadow-1);color:var(--biru-2)}
+.step-art svg{width:40px;height:40px;stroke:currentColor;fill:none;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round}
+.step h4{font-size:16.5px;color:var(--navy);margin-bottom:4px}
+.step p{margin:0;font-size:14px;color:var(--text-soft)}
+.status-list{display:grid;gap:10px;margin-top:10px}
+.status-row{display:flex;gap:12px;align-items:flex-start}
+.status-row p{margin:4px 0 0;font-size:13.5px;color:var(--text-soft)}
+
+/* ===================== PENGATURAN ===================== */
+.fab{
+  position:fixed;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 96px);z-index:95;
+  width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:20px;
+  background:linear-gradient(150deg,var(--glass-1),var(--glass-2));
+  border:1px solid var(--glass-border);
+  -webkit-backdrop-filter:blur(16px) saturate(1.6);backdrop-filter:blur(16px) saturate(1.6);
+  box-shadow:var(--shadow-1), inset 0 1px 0 rgba(255,255,255,.7);
+  transition:transform .2s cubic-bezier(.34,1.5,.5,1), color .25s;
+}
+.fab:active{transform:scale(.92)}
+.fab.admin{color:var(--navy);background:linear-gradient(150deg,rgba(31,58,61,.18),rgba(31,58,61,.06))}
+@media (min-width:760px){.fab{bottom:24px;right:24px}}
+
+.modal-ov{
+  position:fixed;inset:0;z-index:150;display:flex;align-items:flex-end;justify-content:center;
+  padding:16px;background:rgba(15,30,34,.32);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  opacity:0;visibility:hidden;transition:opacity .3s, visibility 0s linear .3s;
+}
+.modal-ov.on{opacity:1;visibility:visible;transition:opacity .3s, visibility 0s}
+@media (min-width:760px){.modal-ov{align-items:center}}
+.modal{
+  width:100%;max-width:430px;border-radius:var(--radius-xl);padding:22px;
+  transform:translateY(24px) scale(.97);
+  transition:transform .38s cubic-bezier(.22,1,.36,1);
+  max-height:86vh;overflow-y:auto;
+}
+.modal-ov.on .modal{transform:none}
+.modal h3{font-size:19px;color:var(--navy);margin-bottom:4px}
+.modal .sub{font-size:13.5px;color:var(--text-soft);margin:0 0 16px}
+.set-row{display:flex;justify-content:space-between;align-items:center;gap:14px;
+  padding:14px 0;border-bottom:1px solid rgba(31,58,61,.08)}
+.set-row:last-of-type{border-bottom:0}
+.set-row .lbl{font-weight:600;font-size:14.5px;color:var(--navy)}
+.set-row .desc{font-size:12.5px;color:var(--text-soft);margin-top:2px}
+.switch{position:relative;width:50px;height:30px;border-radius:999px;flex:0 0 auto;
+  background:rgba(31,58,61,.16);transition:background .25s}
+.switch.on{background:var(--biru-1)}
+.switch::after{content:'';position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;
+  background:#fff;box-shadow:0 2px 6px rgba(31,58,61,.28);transition:transform .28s cubic-bezier(.34,1.5,.5,1)}
+.switch.on::after{transform:translateX(20px)}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px}
+.field input{width:100%;padding:12px 14px;border-radius:var(--radius-sm);
+  border:1px solid var(--card-border);background:rgba(255,255,255,.6);color:var(--text);min-height:46px}
+@media (prefers-color-scheme: dark){.field input{background:rgba(255,255,255,.08)}}
+.field input:focus{outline:none;border-color:var(--biru-1);box-shadow:0 0 0 3px rgba(47,155,244,.2)}
+.admin-badge{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:999px;
+  background:linear-gradient(150deg,rgba(31,58,61,.14),rgba(31,58,61,.05));
+  color:var(--navy);font-weight:700;font-size:13px}
+
+/* ===================== TOAST ===================== */
+.toasts{position:fixed;left:50%;transform:translateX(-50%);
+  bottom:calc(env(safe-area-inset-bottom,0px) + 160px);z-index:180;
+  display:flex;flex-direction:column;gap:9px;width:min(92vw,420px);pointer-events:none}
+@media (min-width:760px){.toasts{bottom:28px}}
+.toast{
+  padding:13px 17px;border-radius:var(--radius-md);font-size:14px;font-weight:500;
+  color:var(--navy);display:flex;gap:10px;align-items:flex-start;
+  background:linear-gradient(150deg,rgba(255,255,255,.72),rgba(255,255,255,.35));
+  border:1px solid var(--glass-border);
+  -webkit-backdrop-filter:blur(18px) saturate(1.7);backdrop-filter:blur(18px) saturate(1.7);
+  box-shadow:var(--shadow-2);
+  animation:toastIn .4s cubic-bezier(.22,1,.36,1) both;
+}
+.toast.out{animation:toastOut .34s ease forwards}
+@keyframes toastIn{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes toastOut{to{opacity:0;transform:translateY(10px) scale(.97)}}
+.toast.err{border-color:rgba(201,122,122,.6)}
+.toast.ok{border-color:rgba(63,184,113,.6)}
+
+/* confetti */
+#confetti{position:fixed;inset:0;z-index:190;pointer-events:none}
+
+/* cache badge */
+.cache-badge{display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:10px 14px;border-radius:var(--radius-md);margin-bottom:12px;font-size:13px;
+  background:rgba(232,185,46,.16);border:1px solid rgba(232,185,46,.4);color:#6B5200}
+@media (prefers-color-scheme: dark){.cache-badge{color:#FFD98A}}
+
+/* ===================== REDUCED MOTION ===================== */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.001ms !important}
+  .glass::after{display:none}
+}
+
+/* ===================== RESPONSIF ===================== */
+@media (max-width:380px){
+  .tab-btn{padding:10px 12px;font-size:13px}
+  .tab-btn .ti{font-size:15px}
+  main{padding-left:12px;padding-right:12px}
+}
+@media (min-width:900px){
+  .stage{height:min(62vh,520px)}
+  .id-card{width:320px}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- ================== SVG FILTER KACA CAIR ================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="liquid" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.013" numOctaves="2" seed="7" result="n"/>
+    <feGaussianBlur in="n" stdDeviation="1.1" result="sn"/>
+    <feDisplacementMap in="SourceGraphic" in2="sn" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<!-- ================== BACKGROUND ================== -->
+<div class="bg-wrap" id="bgWrap" aria-hidden="true">
+  <div id="auroraHost"></div>
+  <div class="doodle-field" id="doodleField"></div>
+</div>
+
+<div class="scroll-bar" id="scrollBar" aria-hidden="true"></div>
+
+<!-- ================== INTRO ================== -->
+<div class="intro" id="intro" role="button" tabindex="0" aria-label="Ketuk untuk masuk">
+  <img class="intro-logo" src="LOGO_MPK_PLACEHOLDER" alt="Logo MPK">
+  <h1>Selamat datang di Aspirasi Digital MPK</h1>
+  <p>Wadah anonim untuk menyuarakan ide dan masukanmu demi kemajuan sekolah.</p>
+  <div class="tap-hint">Ketuk untuk masuk</div>
+</div>
+
+<!-- ================== NAVIGASI ================== -->
+<div class="top-wrap">
+  <nav class="nav-pill glass" id="navPill" role="tablist" aria-label="Navigasi utama">
+    <span class="nav-ind" id="navInd" aria-hidden="true"></span>
+    <button class="tab-btn" id="tab-beranda" role="tab" aria-selected="true"
+            aria-controls="panel-beranda" data-tab="beranda">
+      <span class="ti" aria-hidden="true">🏠</span><span>Beranda</span>
+    </button>
+    <button class="tab-btn" id="tab-aspirasi" role="tab" aria-selected="false"
+            aria-controls="panel-aspirasi" data-tab="aspirasi">
+      <span class="ti" aria-hidden="true">💬</span><span>Aspirasi</span>
+    </button>
+    <button class="tab-btn locked-item" id="tab-event" role="tab" aria-selected="false"
+            aria-controls="panel-event" data-tab="event">
+      <span class="ti" aria-hidden="true">🎉</span><span>Event</span>
+      <span class="lock-pop" id="lockPop" aria-hidden="true">🔒</span>
+    </button>
+    <button class="tab-btn" id="tab-tentang" role="tab" aria-selected="false"
+            aria-controls="panel-tentang" data-tab="tentang">
+      <span class="ti" aria-hidden="true">📖</span><span>Tentang</span>
+    </button>
+  </nav>
+</div>
+
+<!-- ================== KONTEN ================== -->
+<main id="main">
+<div class="panels" id="panels">
+
+  <!-- ============ BERANDA ============ -->
+  <section class="tabpanel active" id="panel-beranda" role="tabpanel" aria-labelledby="tab-beranda">
+    <div class="logo-row reveal" style="--d:0ms">
+      <img src="logo-sman.pngR" alt="Logo SMAN 1 Cipari">
+      <img src="logo-mpk.png" alt="Logo MPK Mahardika">
+    </div>
+
+    <div class="hero reveal" style="--d:60ms">
+      <h1>ASPIRASI DIGITAL MPK MAHARDIKA SMAN 1 CIPARI</h1>
+      <p>Wadah aspirasi anonim untuk kemajuan sekolah kita. Suaramu kami dengarkan.</p>
+    </div>
+
+    <div class="stage reveal" id="stage" style="--d:120ms">
+      <div class="lanyard" aria-hidden="true"></div>
+      <div class="id-wrap" id="idWrap">
+        <div class="id-card glass" id="idCard">
+          <div class="id-hole" aria-hidden="true"></div>
+          <img src="LOGO_MPK_PLACEHOLDER" alt="Logo MPK Mahardika">
+          <div class="id-title">Suara Kamu Penting</div>
+          <div class="id-sub">Kartu MPK Mahardika · SMAN 1 Cipari</div>
+          <div class="id-strip" aria-hidden="true"></div>
+          <div class="drag-hint">Tarik kartunya, boleh kok 👋</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats reveal" style="--d:180ms">
+      <div class="stat">
+        <div class="num" id="statTotal">0</div>
+        <div class="lab">Total aspirasi</div>
+      </div>
+      <div class="stat selesai">
+        <div class="num" id="statSelesai">0</div>
+        <div class="lab">Sudah selesai</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ASPIRASI ============ -->
+  <section class="tabpanel" id="panel-aspirasi" role="tabpanel" aria-labelledby="tab-aspirasi">
+    <div class="seg glass" id="seg" role="tablist" aria-label="Mode aspirasi">
+      <span class="seg-ind" id="segInd" aria-hidden="true"></span>
+      <button class="seg-btn" role="tab" aria-selected="true" data-seg="isi">Isi Aspirasi</button>
+      <button class="seg-btn" role="tab" aria-selected="false" data-seg="daftar">Daftar</button>
+    </div>
+
+    <!-- Isi -->
+    <div id="sub-isi">
+      <div class="card reveal" style="--d:0ms">
+        <h2 class="section-title">Tulis aspirasimu</h2>
+        <textarea id="taIsi" maxlength="1000" placeholder="Contoh: Kantin sebaiknya menyediakan air minum gratis…"
+                  aria-label="Isi aspirasi"></textarea>
+        <div class="counter">
+          <span id="counterText">1000 karakter tersisa</span>
+        </div>
+        <div class="note">
+          <span aria-hidden="true">🔒</span>
+          <span>Otomatis anonim — kami nggak menyimpan identitasmu.</span>
+        </div>
+        <button class="btn btn-primary" id="btnKirim">
+          <span class="glow" aria-hidden="true"></span>
+          <span id="btnKirimText">Kirim aspirasi</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Daftar -->
+    <div id="sub-daftar" hidden>
+      <div class="btn-row reveal" style="--d:0ms;margin-bottom:14px">
+        <button class="btn btn-ghost btn-sm" id="btnRefresh">↻ Segarkan</button>
+      </div>
+      <div id="cacheBadgeHost"></div>
+      <div class="list" id="listUmum"></div>
+      <div style="text-align:center;margin-top:18px">
+        <button class="btn btn-ghost" id="btnMore" hidden>
+          <span class="glow" aria-hidden="true"></span>Muat lebih banyak
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EVENT ============ -->
+  <section class="tabpanel" id="panel-event" role="tabpanel" aria-labelledby="tab-event">
+    <div class="reveal" style="--d:0ms">
+      <h2 class="section-title">Event spesial</h2>
+      <p style="margin:0 0 16px;color:var(--text-soft);font-size:14px">
+        Aspirasi khusus untuk kegiatan atau momen tertentu di sekolah.
+      </p>
+    </div>
+    <div id="adminEventBar" hidden style="margin-bottom:14px">
+      <button class="btn btn-blue btn-sm" id="btnAddEvent">
+        <span class="glow" aria-hidden="true"></span>+ Tambah event baru
+      </button>
+    </div>
+    <div id="eventList"></div>
+  </section>
+
+  <!-- ============ TENTANG ============ -->
+  <section class="tabpanel" id="panel-tentang" role="tabpanel" aria-labelledby="tab-tentang">
+    <div class="reveal" style="--d:0ms">
+      <h2 class="section-title">Bagaimana caranya?</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal" style="--d:60ms">
+        <div class="step-art" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 20l1-4 10-10 3 3-10 10z"/><path d="M14 6l3 3"/></svg>
+        </div>
+        <div>
+          <h4>1. Kirim</h4>
+          <p>Tulis aspirasimu di tab Aspirasi. Nggak perlu nama, nggak perlu login. Cukup ketik dan kirim.</p>
+        </div>
+      </div>
+
+      <div class="step reveal" style="--d:120ms">
+        <div class="step-art" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg>
+        </div>
+        <div>
+          <h4>2. Ditinjau MPK</h4>
+          <p>Pengurus MPK membaca semuanya, mengelompokkan, lalu membawa yang relevan ke pihak sekolah.</p>
+        </div>
+      </div>
+
+      <div class="step reveal" style="--d:180ms">
+        <div class="step-art" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>
+        </div>
+        <div>
+          <h4>3. Ditindaklanjuti</h4>
+          <p>Status tiap aspirasi diperbarui supaya kamu tahu sudah sampai mana prosesnya.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card reveal" style="--d:240ms;margin-top:24px">
+      <h2 class="section-title">Arti status</h2>
+      <div class="status-list">
+        <div class="status-row">
+          <span class="pill Hold">Hold</span>
+          <p>Menunggu tinjauan awal dari pengurus MPK.</p>
+        </div>
+        <div class="status-row">
+          <span class="pill Diproses">Diproses</span>
+          <p>Sedang dikomunikasikan ke pihak terkait di sekolah.</p>
+        </div>
+        <div class="status-row">
+          <span class="pill Selesai">Selesai</span>
+          <p>Sudah ditindaklanjuti atau sudah ada jawaban resmi.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card reveal" style="--d:300ms;margin-top:16px">
+      <h2 class="section-title">Soal anonimitas</h2>
+      <p style="margin:0;font-size:14px;color:var(--text-soft)">
+        Kami benar-benar tidak menyimpan namamu, alamat IP, atau jenis perangkatmu. Yang tersimpan hanya
+        isi aspirasi, waktu kirim, dan kode acak di perangkatmu — kode itu cuma dipakai supaya kamu nggak
+        bisa mem-vote dua kali dan supaya pengiriman tidak dibanjiri spam.
+      </p>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<!-- ================== PENGATURAN ================== -->
+<button class="fab glass" id="fab" aria-label="Buka pengaturan">⚙️</button>
+
+<div class="modal-ov" id="setOv" role="dialog" aria-modal="true" aria-labelledby="setTitle">
+  <div class="modal glass" id="setModal">
+    <h3 id="setTitle">Pengaturan</h3>
+    <p class="sub">Sesuaikan tampilan dan akses.</p>
+
+    <div class="set-row">
+      <div>
+        <div class="lbl" id="adminRowLabel">Masuk sebagai Admin</div>
+        <div class="desc" id="adminRowDesc">Kelola aspirasi &amp; event</div>
+      </div>
+      <div id="adminRowAction">
+        <button class="btn btn-blue btn-sm" id="btnAdminOpen">Masuk</button>
+      </div>
+    </div>
+
+    <div class="set-row">
+      <div>
+        <div class="lbl">Mode ringan</div>
+        <div class="desc" id="liteDesc">Otomatis</div>
+      </div>
+      <button class="switch" id="swLite" role="switch" aria-checked="false" aria-label="Mode ringan"></button>
+    </div>
+
+    <div class="set-row">
+      <div>
+        <div class="lbl">Suara</div>
+        <div class="desc" id="soundDesc">Aktif</div>
+      </div>
+      <button class="switch on" id="swSound" role="switch" aria-checked="true" aria-label="Suara"></button>
+    </div>
+
+    <div style="margin-top:18px;text-align:right">
+      <button class="btn btn-ghost btn-sm" id="btnSetClose">Tutup</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-ov" id="adminOv" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+  <div class="modal glass">
+    <h3 id="adminTitle">Masuk sebagai Admin</h3>
+    <p class="sub">Masukkan kode akses pengurus MPK.</p>
+    <div class="field">
+      <label for="inpPass">Kode akses</label>
+      <input type="password" id="inpPass" autocomplete="current-password" placeholder="••••••••">
+    </div>
+    <div class="btn-row" style="justify-content:flex-end">
+      <button class="btn btn-ghost btn-sm" id="btnAdminCancel">Batal</button>
+      <button class="btn btn-blue btn-sm" id="btnAdminLogin">
+        <span class="glow" aria-hidden="true"></span>Masuk
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script>
+(function () {
+'use strict';
+
+/* ============================================================
+   C0. KONSTANTA — ganti bagian ini saja
+   ============================================================ */
+const SUPABASE_URL = "https://afehhxygnhqxpthmzzc.supabase.co";
+const SUPABASE_KEY = "sb_publishable_R1hvXQ0swirukVLEkx3JCA_T4YqPAhn";
+const ADMIN_EMAIL  = "mpkaspirasismancip@gmail.com";
+
+const TIMEOUT_MS   = 15000;
+const PAGE_SIZE    = 20;
+const CACHE_PREFIX = 'mpk_v3_';
+const CACHE_TTL    = 1000 * 60 * 60 * 24; // 24 jam
+
+/* ============================================================
+   UTIL DASAR
+   ============================================================ */
+const $  = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.prototype.slice.call((r || document).querySelectorAll(s));
+const wait = ms => new Promise(r => setTimeout(r, ms));
+
+function safeGet(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw === null ? fallback : JSON.parse(raw);
+  } catch (e) { return fallback; }
+}
+function safeSet(key, value) {
+  try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) { /* abaikan */ }
+}
+const memStore = {};
+function getStore(key, fallback) {
+  if (key in memStore) return memStore[key];
+  return safeGet(key, fallback);
+}
+function setStore(key, value) {
+  memStore[key] = value;
+  safeSet(key, value);
+}
+
+function escapeId(s) { return String(s).replace(/[^A-Za-z0-9_-]/g, ''); }
+
+const dtf = new Intl.DateTimeFormat('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+function formatTanggal(iso) {
+  try { return dtf.format(new Date(iso)); } catch (e) { return ''; }
+}
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ============================================================
+   STATE
+   ============================================================ */
+const state = {
+  tab: 'beranda',
+  seg: 'isi',
+  busyTab: false,
+  pendingTab: null,
+  admin: null,                // { access_token, refresh_token, expires_at }
+  refreshTimer: null,
+  clientId: '',
+  events: [],
+  eventLoaded: false,
+  stats: { total: 0, selesai: 0 },
+  list: [],                   // aspirasi umum yang tampil
+  listOffset: 0,
+  listHasMore: false,
+  listLoaded: false,
+  eventLists: {},             // { [eventId]: { items, offset, hasMore, loaded, open } }
+  voted: {},
+  online: true,
+  lite: false,
+  liteManual: null,
+  muted: false
+};
+
+/* ============================================================
+   C7. CLIENT ID
+   ============================================================ */
+function makeClientId() {
+  try {
+    if (window.crypto && typeof crypto.randomUUID === 'function') {
+      return crypto.randomUUID();
+    }
+  } catch (e) { /* lanjut ke fallback */ }
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let out = '';
+  try {
+    const buf = new Uint8Array(24);
+    crypto.getRandomValues(buf);
+    for (let i = 0; i < buf.length; i++) out += chars[buf[i] % chars.length];
+  } catch (e) {
+    for (let i = 0; i < 24; i++) out += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return out;
+}
+(function initClientId() {
+  let id = safeGet(CACHE_PREFIX + 'client', '');
+  if (!id || !/^[A-Za-z0-9-]{8,64}$/.test(id)) {
+    id = makeClientId();
+    safeSet(CACHE_PREFIX + 'client', id);
+  }
+  state.clientId = id;
+})();
+
+state.voted = getStore(CACHE_PREFIX + 'voted', {}) || {};
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+const toastHost = $('#toasts');
+function toast(msg, kind) {
+  while (toastHost.children.length >= 3) {
+    toastHost.removeChild(toastHost.firstElementChild);
+  }
+  const el = document.createElement('div');
+  el.className = 'toast' + (kind ? ' ' + kind : '');
+  const icon = document.createElement('span');
+  icon.setAttribute('aria-hidden', 'true');
+  icon.textContent = kind === 'err' ? '⚠️' : (kind === 'ok' ? '✅' : '💬');
+  const span = document.createElement('span');
+  span.textContent = String(msg);
+  el.appendChild(icon);
+  el.appendChild(span);
+  toastHost.appendChild(el);
+  setTimeout(() => {
+    el.classList.add('out');
+    setTimeout(() => { if (el.parentNode) el.parentNode.removeChild(el); }, 360);
+  }, 4200);
+}
+
+/* ============================================================
+   C1. API HELPER
+   ============================================================ */
+function ApiError(message, status, data, kind) {
+  this.name = 'ApiError';
+  this.message = message;
+  this.status = status || 0;
+  this.data = data || null;
+  this.kind = kind || 'http';
+}
+ApiError.prototype = Object.create(Error.prototype);
+
+async function rawFetch(path, opts) {
+  opts = opts || {};
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), opts.timeout || TIMEOUT_MS);
+  const headers = { apikey: SUPABASE_KEY };
+  if (opts.body !== undefined && opts.body !== null) headers['Content-Type'] = 'application/json';
+  if (opts.auth && state.admin && state.admin.access_token) {
+    headers['Authorization'] = 'Bearer ' + state.admin.access_token;
+  }
+  let res;
+  try {
+    res = await fetch(SUPABASE_URL + path, {
+      method: opts.method || 'GET',
+      headers: headers,
+      signal: ctrl.signal,
+      body: (opts.body !== undefined && opts.body !== null) ? JSON.stringify(opts.body) : undefined
+    });
+  } catch (e) {
+    clearTimeout(timer);
+    throw new ApiError('Tidak bisa terhubung ke server. Periksa koneksi lalu coba lagi.', 0, null, 'network');
+  }
+  clearTimeout(timer);
+
+  const text = await res.text();
+  let data = null;
+  if (text) { try { data = JSON.parse(text); } catch (e) { data = text; } }
+
+  if (!res.ok) {
+    const msg = (data && (data.message || data.error_description || data.error || data.msg)) || ('HTTP ' + res.status);
+    throw new ApiError(msg, res.status, data, 'http');
+  }
+  return data;
+}
+
+async function api(path, opts) {
+  opts = opts || {};
+  try {
+    return await rawFetch(path, opts);
+  } catch (e) {
+    // Refresh token sekali bila 401 / JWT expired pada request admin.
+    if (opts.auth && state.admin && (e.status === 401 || /jwt|token/i.test(e.message || ''))) {
+      const ok = await refreshToken();
+      if (ok) {
+        try { return await rawFetch(path, opts); }
+        catch (e2) { logoutAdmin(true); throw e2; }
+      }
+      logoutAdmin(true);
+    }
+    throw e;
+  }
+}
+
+/* Pembungkus panggilan RPC: menyeragamkan pesan error. */
+async function rpc(name, args, opts) {
+  opts = opts || {};
+  const data = await api('/rest/v1/rpc/' + name, {
+    method: 'POST',
+    body: args || {},
+    auth: !!opts.auth,
+    timeout: opts.timeout
+  });
+  return data;
+}
+
+/* ============================================================
+   C1. QUERY DAFTAR
+   ============================================================ */
+function listQuery(eventId, offset) {
+  const base = '/rest/v1/aspirasi?select=id,created_at,isi,status,votes,event_id&order=created_at.desc'
+    + '&limit=' + (PAGE_SIZE + 1) + '&offset=' + offset;
+  if (eventId) return base + '&event_id=eq.' + encodeURIComponent(eventId);
+  return base + '&event_id=is.null';
+}
+
+async function fetchListPage(eventId, offset, auth) {
+  const data = await api(listQuery(eventId, offset), { auth: !!auth });
+  const rows = Array.isArray(data) ? data : [];
+  const hasMore = rows.length > PAGE_SIZE;
+  return { items: rows.slice(0, PAGE_SIZE), hasMore: hasMore };
+}
+
+/* ============================================================
+   AUTH ADMIN
+   ============================================================ */
+async function loginAdmin(password) {
+  const data = await api('/auth/v1/token?grant_type=password', {
+    method: 'POST',
+    body: { email: ADMIN_EMAIL, password: password }
+  });
+  if (!data || !data.access_token) throw new ApiError('Kode akses salah', 401);
+  state.admin = {
+    access_token: data.access_token,
+    refresh_token: data.refresh_token,
+    expires_at: Date.now() + ((data.expires_in || 3600) * 1000)
+  };
+  const isAdm = await rpc('is_admin', {}, { auth: true });
+  if (isAdm !== true) {
+    state.admin = null;
+    throw new ApiError('Kode akses salah', 403);
+  }
+  scheduleRefresh();
+  return true;
+}
+
+async function refreshToken() {
+  if (!state.admin || !state.admin.refresh_token) return false;
+  try {
+    const data = await api('/auth/v1/token?grant_type=refresh_token', {
+      method: 'POST',
+      body: { refresh_token: state.admin.refresh_token }
+    });
+    if (!data || !data.access_token) return false;
+    state.admin = {
+      access_token: data.access_token,
+      refresh_token: data.refresh_token || state.admin.refresh_token,
+      expires_at: Date.now() + ((data.expires_in || 3600) * 1000)
+    };
+    scheduleRefresh();
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function scheduleRefresh() {
+  if (state.refreshTimer) clearTimeout(state.refreshTimer);
+  if (!state.admin) return;
+  const ms = Math.max(15000, state.admin.expires_at - Date.now() - 60000);
+  state.refreshTimer = setTimeout(async () => {
+    const ok = await refreshToken();
+    if (!ok) logoutAdmin(true);
+  }, ms);
+}
+
+function logoutAdmin(silent) {
+  state.admin = null;
+  if (state.refreshTimer) { clearTimeout(state.refreshTimer); state.refreshTimer = null; }
+  renderAdminUI();
+  if (!silent) toast('Kamu sudah keluar dari mode admin');
+  reloadLists();
+}
+
+/* ============================================================
+   CACHE (stale-while-revalidate)
+   ============================================================ */
+function writeCache(key, value) {
+  setStore(CACHE_PREFIX + key, { t: Date.now(), v: value });
+}
+function readCache(key) {
+  const rec = getStore(CACHE_PREFIX + key, null);
+  if (!rec || typeof rec !== 'object' || !('v' in rec)) return null;
+  if (Date.now() - rec.t > CACHE_TTL) return null;
+  return rec.v;
+}
+
+/* ============================================================
+   RENDER: STATISTIK
+   ============================================================ */
+let statAnimated = false;
+function renderStats(animate) {
+  const t = $('#statTotal'), s = $('#statSelesai');
+  const total = Number(state.stats.total) || 0;
+  const selesai = Number(state.stats.selesai) || 0;
+  if (!animate || reduceMotion || statAnimated) {
+    t.textContent = total.toLocaleString('id-ID');
+    s.textContent = selesai.toLocaleString('id-ID');
+    statAnimated = true;
+    return;
+  }
+  statAnimated = true;
+  countUp(t, total);
+  countUp(s, selesai);
+}
+function countUp(el, target) {
+  const dur = 900;
+  const start = performance.now();
+  function step(now) {
+    const p = Math.min(1, (now - start) / dur);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(target * eased).toLocaleString('id-ID');
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = target.toLocaleString('id-ID');
+  }
+  requestAnimationFrame(step);
+}
+
+/* ============================================================
+   RENDER: KARTU ASPIRASI
+   ============================================================ */
+function buildItem(a, opts) {
+  opts = opts || {};
+  const el = document.createElement('article');
+  el.className = 'item';
+  el.dataset.id = a.id;
+
+  const top = document.createElement('div');
+  top.className = 'item-top';
+
+  const pill = document.createElement('span');
+  pill.className = 'pill ' + escapeId(a.status);
+  pill.textContent = a.status;
+  top.appendChild(pill);
+
+  const date = document.createElement('span');
+  date.className = 'item-date';
+  date.textContent = formatTanggal(a.created_at);
+  top.appendChild(date);
+  el.appendChild(top);
+
+  const isi = document.createElement('p');
+  isi.className = 'item-isi';
+  isi.textContent = a.isi;
+  el.appendChild(isi);
+
+  const bottom = document.createElement('div');
+  bottom.className = 'item-bottom';
+
+  const voteBtn = document.createElement('button');
+  voteBtn.className = 'vote-btn';
+  voteBtn.type = 'button';
+  voteBtn.setAttribute('aria-label', 'Vote aspirasi ini');
+  const up = document.createElement('span');
+  up.className = 'up';
+  up.setAttribute('aria-hidden', 'true');
+  up.textContent = '▲';
+  const num = document.createElement('span');
+  num.className = 'vote-num';
+  num.textContent = String(Number(a.votes) || 0);
+  voteBtn.appendChild(up);
+  voteBtn.appendChild(num);
+
+  if (state.voted[a.id]) voteBtn.classList.add('voted');
+
+  voteBtn.addEventListener('click', () => onVote(a.id, voteBtn, num));
+  bottom.appendChild(voteBtn);
+
+  const actions = document.createElement('div');
+  actions.className = 'item-actions';
+
+  if (state.admin) {
+    const sel = document.createElement('select');
+    sel.className = 'status-sel';
+    sel.setAttribute('aria-label', 'Ubah status aspirasi');
+    ['Hold', 'Diproses', 'Selesai', 'Ditolak'].forEach(st => {
+      const o = document.createElement('option');
+      o.value = st; o.textContent = st;
+      if (st === a.status) o.selected = true;
+      sel.appendChild(o);
+    });
+    sel.addEventListener('change', () => onSetStatus(a.id, sel.value, sel));
+    actions.appendChild(sel);
+  }
+  bottom.appendChild(actions);
+  el.appendChild(bottom);
+
+  return el;
+}
+
+function skeletonList(container, n) {
+  container.textContent = '';
+  for (let i = 0; i < (n || 4); i++) {
+    const sk = document.createElement('div');
+    sk.className = 'skel';
+    sk.innerHTML = '<div class="sk-line w40"></div><div class="sk-line w90"></div><div class="sk-line w70"></div>';
+    container.appendChild(sk);
+  }
+}
+
+function emptyState(container, title, sub) {
+  container.textContent = '';
+  const d = document.createElement('div');
+  d.className = 'empty';
+  const b = document.createElement('div');
+  b.className = 'big'; b.setAttribute('aria-hidden', 'true'); b.textContent = '💭';
+  const h = document.createElement('div');
+  h.style.fontWeight = '700'; h.style.color = 'var(--navy)'; h.textContent = title;
+  const p = document.createElement('p');
+  p.style.margin = '6px 0 0'; p.textContent = sub;
+  d.appendChild(b); d.appendChild(h); d.appendChild(p);
+  container.appendChild(d);
+}
+
+/* ============================================================
+   VOTE
+   ============================================================ */
+async function onVote(id, btn, numEl) {
+  if (btn.disabled) return;
+  const alreadyLocal = !!state.voted[id];
+  const current = Number(numEl.textContent) || 0;
+
+  btn.disabled = true;
+  if (!alreadyLocal) {
+    numEl.textContent = String(current + 1);
+    numEl.classList.remove('bounce');
+    void numEl.offsetWidth;
+    numEl.classList.add('bounce');
+  }
+  try {
+    const res = await rpc('vote_aspirasi', { p_client_id: state.clientId, p_id: id });
+    if (!res || res.success !== true) {
+      if (!alreadyLocal) numEl.textContent = String(current);
+      toast((res && res.error) || 'Vote gagal, coba lagi', 'err');
+      return;
+    }
+    numEl.textContent = String(Number(res.votes) || 0);
+    if (res.already) {
+      state.voted[id] = true;
+      setStore(CACHE_PREFIX + 'voted', state.voted);
+      btn.classList.add('voted');
+    } else {
+      state.voted[id] = true;
+      setStore(CACHE_PREFIX + 'voted', state.voted);
+      btn.classList.add('voted');
+      numEl.classList.remove('bounce');
+      void numEl.offsetWidth;
+      numEl.classList.add('bounce');
+    }
+    // perbarui state lokal
+    const target = state.list.find(x => x.id === id);
+    if (target) target.votes = Number(res.votes) || 0;
+    Object.keys(state.eventLists).forEach(k => {
+      const it = state.eventLists[k].items.find(x => x.id === id);
+      if (it) it.votes = Number(res.votes) || 0;
+    });
+  } catch (e) {
+    if (!alreadyLocal) numEl.textContent = String(current);
+    toast(e.message || 'Vote gagal, coba lagi', 'err');
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+/* ============================================================
+   ADMIN: UBAH STATUS
+   ============================================================ */
+async function onSetStatus(id, status, sel) {
+  if (sel) sel.disabled = true;
+  try {
+    const res = await rpc('admin_set_status', { p_id: id, p_status: status }, { auth: true });
+    if (!res || res.success !== true) {
+      toast((res && res.error) || 'Gagal mengubah status', 'err');
+      return;
+    }
+    toast('Status diperbarui menjadi ' + status, 'ok');
+    const apply = list => {
+      const it = list.find(x => x.id === id);
+      if (it) it.status = status;
+    };
+    apply(state.list);
+    Object.keys(state.eventLists).forEach(k => apply(state.eventLists[k].items));
+    // Refresh tampilan ringan
+    if (status === 'Ditolak') {
+      rerenderListUmum();
+      rerenderAllEventLists();
+    } else {
+      updatePillInDOM(id, status);
+    }
+  } catch (e) {
+    toast(e.message || 'Gagal mengubah status', 'err');
+  } finally {
+    if (sel) sel.disabled = false;
+  }
+}
+function updatePillInDOM(id, status) {
+  $$('.item[data-id="' + CSS.escape(id) + '"]').forEach(el => {
+    const pill = el.querySelector('.pill');
+    if (pill) { pill.className = 'pill ' + escapeId(status); pill.textContent = status; }
+  });
+}
+
+/* ============================================================
+   RENDER: DAFTAR UMUM
+   ============================================================ */
+function rerenderListUmum() {
+  const host = $('#listUmum');
+  if (!state.list.length) {
+    if (state.listLoaded) emptyState(host, 'Belum ada aspirasi', 'Jadilah yang pertama menyuarakan ide untuk sekolah.');
+    else skeletonList(host, 4);
+    return;
+  }
+  host.textContent = '';
+  state.list.forEach(a => host.appendChild(buildItem(a)));
+  $('#btnMore').hidden = !state.listHasMore;
+}
+
+function renderCacheBadge(show) {
+  const host = $('#cacheBadgeHost');
+  host.textContent = '';
+  if (!show) return;
+  const d = document.createElement('div');
+  d.className = 'cache-badge';
+  const s = document.createElement('span');
+  s.textContent = '📦 Data tersimpan, sedang mencoba terhubung…';
+  const b = document.createElement('button');
+  b.className = 'btn btn-ghost btn-sm';
+  b.textContent = 'Coba lagi';
+  b.addEventListener('click', () => { host.textContent = ''; loadListUmum(false); loadStats(); loadEvents(); });
+  d.appendChild(s); d.appendChild(b);
+  host.appendChild(d);
+}
+
+/* ============================================================
+   RENDER: EVENT
+   ============================================================ */
+function hasOpenEvent() {
+  return state.events.some(e => !e.locked);
+}
+
+function renderEventNav() {
+  const btn = $('#tab-event');
+  const canOpen = state.admin || hasOpenEvent();
+  btn.classList.toggle('locked-item', !canOpen);
+  btn.setAttribute('aria-disabled', canOpen ? 'false' : 'true');
+}
+
+function rerenderAllEventLists() {
+  Object.keys(state.eventLists).forEach(id => {
+    const st = state.eventLists[id];
+    if (st.loaded) renderEventListItems(id);
+  });
+}
+
+function renderEventListItems(eventId) {
+  const host = $('#evlist-' + CSS.escape(eventId));
+  if (!host) return;
+  const st = state.eventLists[eventId];
+  if (!st) return;
+  if (!st.items.length) {
+    if (st.loaded) {
+      const d = document.createElement('div');
+      d.className = 'empty';
+      d.style.padding = '22px 10px';
+      d.textContent = 'Belum ada aspirasi untuk event ini.';
+      host.textContent = ''; host.appendChild(d);
+    }
+    return;
+  }
+  host.textContent = '';
+  st.items.forEach(a => host.appendChild(buildItem(a)));
+  if (st.hasMore) {
+    const more = document.createElement('button');
+    more.className = 'btn btn-ghost btn-sm';
+    more.style.marginTop = '6px';
+    more.textContent = 'Muat lebih banyak';
+    more.addEventListener('click', () => loadEventList(eventId, true, more));
+    host.appendChild(more);
+  }
+}
+
+function renderEvents() {
+  const host = $('#eventList');
+  host.textContent = '';
+  if (!state.events.length) {
+    const d = document.createElement('div');
+    d.className = 'empty';
+    d.innerHTML = '';
+    const b = document.createElement('div'); b.className = 'big'; b.textContent = '🎈';
+    const t = document.createElement('div'); t.style.fontWeight = '700'; t.textContent = 'Belum ada event';
+    const p = document.createElement('p'); p.style.margin = '6px 0 0';
+    p.textContent = 'Pengurus MPK belum membuka event spesial. Pantau terus ya!';
+    d.appendChild(b); d.appendChild(t); d.appendChild(p);
+    host.appendChild(d);
+    return;
+  }
+  state.events.forEach(ev => {
+    const card = document.createElement('div');
+    card.className = 'card event-card';
+    card.dataset.evid = ev.id;
+
+    const head = document.createElement('div');
+    head.className = 'event-head';
+
+    const h3 = document.createElement('h3');
+    const nameSpan = document.createElement('span');
+    nameSpan.className = 'ev-name';
+    nameSpan.textContent = ev.nama;
+    h3.appendChild(nameSpan);
+
+    const badge = document.createElement('span');
+    badge.className = 'badge ' + (ev.locked ? 'lock' : 'open');
+    badge.textContent = ev.locked ? 'Terkunci' : 'Terbuka';
+    h3.appendChild(badge);
+    head.appendChild(h3);
+
+    const toggle = document.createElement('button');
+    toggle.className = 'btn btn-ghost btn-sm';
+    toggle.type = 'button';
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.textContent = 'Lihat aspirasi';
+    head.appendChild(toggle);
+    card.appendChild(head);
+
+    // Admin controls
+    if (state.admin) {
+      const adminBar = document.createElement('div');
+      adminBar.className = 'inline-edit';
+
+      const inp = document.createElement('input');
+      inp.type = 'text';
+      inp.maxLength = 100;
+      inp.value = ev.nama;
+      inp.setAttribute('aria-label', 'Nama event');
+      adminBar.appendChild(inp);
+
+      const btnSave = document.createElement('button');
+      btnSave.className = 'btn btn-blue btn-sm';
+      btnSave.textContent = 'Ganti nama';
+      btnSave.addEventListener('click', async () => {
+        btnSave.disabled = true;
+        try {
+          const res = await rpc('admin_rename_event', { p_id: ev.id, p_nama: inp.value }, { auth: true });
+          if (!res || res.success !== true) { toast((res && res.error) || 'Gagal mengganti nama', 'err'); return; }
+          ev.nama = (inp.value || '').trim() || 'Event Spesial';
+          nameSpan.textContent = ev.nama;
+          inp.value = ev.nama;
+          writeCache('events', state.events);
+          toast('Nama event diperbarui', 'ok');
+        } catch (e) { toast(e.message || 'Gagal mengganti nama', 'err'); }
+        finally { btnSave.disabled = false; }
+      });
+      adminBar.appendChild(btnSave);
+
+      const btnLock = document.createElement('button');
+      btnLock.className = 'btn btn-ghost btn-sm';
+      btnLock.textContent = ev.locked ? 'Buka' : 'Kunci';
+      btnLock.addEventListener('click', async () => {
+        btnLock.disabled = true;
+        try {
+          const res = await rpc('admin_set_event_lock', { p_id: ev.id, p_locked: !ev.locked }, { auth: true });
+          if (!res || res.success !== true) { toast((res && res.error) || 'Gagal mengubah kunci', 'err'); return; }
+          ev.locked = !ev.locked;
+          badge.className = 'badge ' + (ev.locked ? 'lock' : 'open');
+          badge.textContent = ev.locked ? 'Terkunci' : 'Terbuka';
+          btnLock.textContent = ev.locked ? 'Buka' : 'Kunci';
+          renderEventNav();
+          writeCache('events', state.events);
+          toast(ev.locked ? 'Event dikunci' : 'Event dibuka', 'ok');
+          rerenderEventFormVisibility(ev);
+        } catch (e) { toast(e.message || 'Gagal mengubah kunci', 'err'); }
+        finally { btnLock.disabled = false; }
+      });
+      adminBar.appendChild(btnLock);
+      card.appendChild(adminBar);
+    }
+
+    const body = document.createElement('div');
+    body.className = 'acc-body';
+    const inner = document.createElement('div');
+    inner.className = 'acc-inner';
+    const pad = document.createElement('div');
+    pad.className = 'acc-pad';
+
+    const formWrap = document.createElement('div');
+    formWrap.className = 'ev-form';
+    buildEventForm(formWrap, ev);
+    pad.appendChild(formWrap);
+
+    const listHost = document.createElement('div');
+    listHost.className = 'list';
+    listHost.id = 'evlist-' + ev.id;
+    listHost.style.marginTop = '16px';
+    pad.appendChild(listHost);
+
+    inner.appendChild(pad);
+    body.appendChild(inner);
+    card.appendChild(body);
+
+    toggle.addEventListener('click', () => {
+      const open = body.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.textContent = open ? 'Sembunyikan' : 'Lihat aspirasi';
+      if (open && !(state.eventLists[ev.id] && state.eventLists[ev.id].loaded)) {
+        loadEventList(ev.id, false);
+      }
+    });
+
+    host.appendChild(card);
+  });
+}
+
+function rerenderEventFormVisibility(ev) {
+  const card = $('.event-card[data-evid="' + CSS.escape(ev.id) + '"]');
+  if (!card) return;
+  const formWrap = card.querySelector('.ev-form');
+  if (!formWrap) return;
+  formWrap.textContent = '';
+  buildEventForm(formWrap, ev);
+}
+
+function buildEventForm(host, ev) {
+  if (ev.locked && !state.admin) {
+    const note = document.createElement('div');
+    note.className = 'note';
+    note.innerHTML = '';
+    const s = document.createElement('span'); s.setAttribute('aria-hidden', 'true'); s.textContent = '🔒';
+    const t = document.createElement('span');
+    t.textContent = 'Event ini sedang ditutup untuk aspirasi baru. Aspirasi lama tetap bisa kamu lihat dan vote.';
+    note.appendChild(s); note.appendChild(t);
+    host.appendChild(note);
+    return;
+  }
+  const ta = document.createElement('textarea');
+  ta.maxLength = 1000;
+  ta.setAttribute('aria-label', 'Aspirasi untuk ' + ev.nama);
+  ta.placeholder = 'Tulis aspirasimu untuk ' + ev.nama + '…';
+  host.appendChild(ta);
+
+  const row = document.createElement('div');
+  row.style.display = 'flex';
+  row.style.justifyContent = 'space-between';
+  row.style.alignItems = 'center';
+  row.style.gap = '10px';
+  row.style.marginTop = '10px';
+  row.style.flexWrap = 'wrap';
+
+  const cnt = document.createElement('span');
+  cnt.style.fontSize = '12.5px';
+  cnt.style.color = 'var(--text-soft)';
+  cnt.textContent = '1000 karakter tersisa';
+  row.appendChild(cnt);
+
+  const btn = document.createElement('button');
+  btn.className = 'btn btn-primary btn-sm';
+  const gl = document.createElement('span'); gl.className = 'glow'; gl.setAttribute('aria-hidden', 'true');
+  const tx = document.createElement('span'); tx.textContent = 'Kirim aspirasi';
+  btn.appendChild(gl); btn.appendChild(tx);
+  row.appendChild(btn);
+
+  host.appendChild(row);
+
+  ta.addEventListener('input', () => {
+    const left = 1000 - ta.value.length;
+    cnt.textContent = left + ' karakter tersisa';
+  });
+
+  btn.addEventListener('click', async () => {
+    const text = ta.value.trim();
+    if (!text) { toast('Aspirasi tidak boleh kosong', 'err'); return; }
+    btn.disabled = true;
+    tx.textContent = 'Mengirim…';
+    try {
+      const res = await rpc('submit_aspirasi', {
+        p_client_id: state.clientId,
+        p_isi: text,
+        p_event_id: ev.id
+      });
+      if (!res || res.success !== true) {
+        toast((res && res.error) || 'Gagal mengirim aspirasi', 'err');
+        return;
+      }
+      ta.value = '';
+      cnt.textContent = '1000 karakter tersisa';
+      toast('Aspirasi terkirim, terima kasih!', 'ok');
+      fireConfetti();
+      // refresh di belakang
+      state.eventLists[ev.id] = { items: [], offset: 0, hasMore: false, loaded: false, open: true };
+      loadEventList(ev.id, false);
+      loadStats();
+    } catch (e) {
+      toast(e.message || 'Gagal mengirim aspirasi', 'err');
+    } finally {
+      btn.disabled = false;
+      tx.textContent = 'Kirim aspirasi';
+    }
+  });
+}
+
+/* ============================================================
+   LOADER
+   ============================================================ */
+async function loadStats() {
+  try {
+    const data = await api('/rest/v1/rpc/get_stats');
+    if (data && typeof data.total !== 'undefined') {
+      state.stats = { total: Number(data.total) || 0, selesai: Number(data.selesai) || 0 };
+      writeCache('stats', state.stats);
+      state.online = true;
+      renderCacheBadge(false);
+      if (state.tab === 'beranda' && statVisible) renderStats(false);
+    }
+  } catch (e) {
+    state.online = false;
+    if (state.tab === 'aspirasi') renderCacheBadge(true);
+    console.error('[stats]', e);
+  }
+}
+
+async function loadEvents() {
+  try {
+    const data = await api('/rest/v1/events?select=id,nama,locked&order=created_at.asc');
+    if (Array.isArray(data)) {
+      state.events = data;
+      state.eventLoaded = true;
+      writeCache('events', data);
+      renderEventNav();
+      renderEvents();
+    }
+  } catch (e) {
+    state.online = false;
+    console.error('[events]', e);
+  }
+}
+
+async function loadListUmum(append) {
+  if (!append) {
+    if (!state.listLoaded) {
+      const cached = readCache('list_null');
+      if (cached && Array.isArray(cached.items)) {
+        state.list = cached.items;
+        state.listOffset = cached.items.length;
+        state.listHasMore = !!cached.hasMore;
+        state.listLoaded = true;
+        rerenderListUmum();
+      } else {
+        skeletonList($('#listUmum'), 4);
+      }
+    }
+  }
+  try {
+    const offset = append ? state.listOffset : 0;
+    const page = await fetchListPage(null, offset, !!state.admin);
+    if (append) {
+      state.list = state.list.concat(page.items);
+    } else {
+      state.list = page.items;
+    }
+    state.listOffset = state.list.length;
+    state.listHasMore = page.hasMore;
+    state.listLoaded = true;
+    state.online = true;
+    renderCacheBadge(false);
+    if (!append) writeCache('list_null', { items: state.list, hasMore: state.listHasMore });
+    rerenderListUmum();
+  } catch (e) {
+    state.online = false;
+    if (state.tab === 'aspirasi') renderCacheBadge(true);
+    if (!state.listLoaded) skeletonList($('#listUmum'), 4);
+    console.error('[list]', e);
+  }
+}
+
+async function loadEventList(eventId, append, btn) {
+  const st = state.eventLists[eventId] || { items: [], offset: 0, hasMore: false, loaded: false };
+  state.eventLists[eventId] = st;
+  if (!append) {
+    st.items = [];
+    st.offset = 0;
+    st.loaded = false;
+  }
+  if (btn) btn.disabled = true;
+  try {
+    const page = await fetchListPage(eventId, append ? st.offset : 0, !!state.admin);
+    st.items = append ? st.items.concat(page.items) : page.items;
+    st.offset = st.items.length;
+    st.hasMore = page.hasMore;
+    st.loaded = true;
+    renderEventListItems(eventId);
+  } catch (e) {
+    const host = $('#evlist-' + CSS.escape(eventId));
+    if (host && !st.items.length) {
+      host.textContent = '';
+      const d = document.createElement('div');
+      d.className = 'empty';
+      d.style.padding = '20px 10px';
+      d.textContent = 'Gagal memuat. Coba lagi nanti.';
+      host.appendChild(d);
+    }
+    console.error('[eventList]', e);
+  } finally {
+    if (btn) btn.disabled = false;
+  }
+}
+
+function reloadLists() {
+  state.listLoaded = false;
+  state.list = [];
+  loadListUmum(false);
+  state.eventLists = {};
+  if (state.tab === 'event') renderEvents();
+}
+
+/* ============================================================
+   KIRIM ASPIRASI UMUM
+   ============================================================ */
+const taIsi = $('#taIsi');
+const counterText = $('#counterText');
+taIsi.addEventListener('input', () => {
+  const left = 1000 - taIsi.value.length;
+  counterText.textContent = left + ' karakter tersisa';
+  counterText.classList.toggle('warn', left < 80);
+});
+
+$('#btnKirim').addEventListener('click', async () => {
+  const btn = $('#btnKirim');
+  const label = $('#btnKirimText');
+  const text = taIsi.value.trim();
+  if (!text) { toast('Aspirasi tidak boleh kosong', 'err'); return; }
+  btn.disabled = true;
+  label.textContent = 'Mengirim…';
+  try {
+    const res = await rpc('submit_aspirasi', {
+      p_client_id: state.clientId,
+      p_isi: text,
+      p_event_id: null
+    });
+    if (!res || res.success !== true) {
+      toast((res && res.error) || 'Gagal mengirim aspirasi', 'err');
+      return;
+    }
+    taIsi.value = '';
+    counterText.textContent = '1000 karakter tersisa';
+    counterText.classList.remove('warn');
+    toast('Aspirasi terkirim, terima kasih!', 'ok');
+    fireConfetti();
+    // pindah ke daftar + segarkan
+    setSeg('daftar');
+    state.listLoaded = false;
+    state.list = [];
+    await loadListUmum(false);
+    loadStats();
+  } catch (e) {
+    toast(e.message || 'Gagal mengirim aspirasi', 'err');
+  } finally {
+    btn.disabled = false;
+    label.textContent = 'Kirim aspirasi';
+  }
+});
+
+$('#btnRefresh').addEventListener('click', () => {
+  state.listLoaded = false;
+  state.list = [];
+  loadListUmum(false);
+  loadStats();
+});
+
+$('#btnMore').addEventListener('click', async () => {
+  const b = $('#btnMore');
+  b.disabled = true;
+  await loadListUmum(true);
+  b.disabled = false;
+});
+
+/* ============================================================
+   SEGMENTED CONTROL
+   ============================================================ */
+function setSeg(name) {
+  state.seg = name;
+  $$('.seg-btn').forEach(b => b.setAttribute('aria-selected', b.dataset.seg === name ? 'true' : 'false'));
+  $('#sub-isi').hidden = name !== 'isi';
+  $('#sub-daftar').hidden = name !== 'daftar';
+  positionSegInd();
+  if (name === 'daftar' && !state.listLoaded) loadListUmum(false);
+}
+function positionSegInd() {
+  const active = $('.seg-btn[aria-selected="true"]');
+  const ind = $('#segInd');
+  if (!active || !ind) return;
+  const rect = active.getBoundingClientRect();
+  const parentRect = active.parentElement.getBoundingClientRect();
+  ind.style.width = rect.width + 'px';
+  ind.style.transform = 'translateX(' + (rect.left - parentRect.left) + 'px)';
+}
+$$('.seg-btn').forEach(b => b.addEventListener('click', () => setSeg(b.dataset.seg)));
+
+/* ============================================================
+   TAB
+   ============================================================ */
+const TAB_ORDER = ['beranda', 'aspirasi', 'event', 'tentang'];
+const ACCENT = { beranda: '#2F9BF4', aspirasi: '#FFD23F', event: '#3FB871', tentang: '#1F3A3D' };
+const panels = {
+  beranda: $('#panel-beranda'),
+  aspirasi: $('#panel-aspirasi'),
+  event: $('#panel-event'),
+  tentang: $('#panel-tentang')
+};
+
+function positionNavInd() {
+  const active = $('.tab-btn[aria-selected="true"]');
+  const ind = $('#navInd');
+  if (!active || !ind) return;
+  const rect = active.getBoundingClientRect();
+  const parentRect = active.parentElement.getBoundingClientRect();
+  ind.style.width = rect.width + 'px';
+  ind.style.transform = 'translateX(' + (rect.left - parentRect.left + active.parentElement.scrollLeft) + 'px)';
+}
+
+function setAccent(tab) {
+  document.documentElement.style.setProperty('--accent', ACCENT[tab] || '#2F9BF4');
+  $$('.aurora-preset').forEach(p => p.classList.toggle('on', p.dataset.tab === tab));
+}
+
+function canOpenTab(name) {
+  if (name !== 'event') return true;
+  if (state.admin) return true;
+  return hasOpenEvent();
+}
+
+async function switchTab(name, opts) {
+  opts = opts || {};
+  if (!panels[name]) name = 'beranda';
+  if (!canOpenTab(name)) {
+    shakeEvent();
+    toast('Belum ada event yang dibuka pengurus MPK');
+    if (location.hash !== '#beranda') location.hash = '#beranda';
+    return;
+  }
+  if (name === state.tab && !opts.force) { return; }
+  if (state.busyTab) { state.pendingTab = name; return; }
+
+  const oldName = state.tab;
+  const oldIdx = TAB_ORDER.indexOf(oldName);
+  const newIdx = TAB_ORDER.indexOf(name);
+  const dir = newIdx >= oldIdx ? 1 : -1;
+
+  state.busyTab = true;
+  const oldP = panels[oldName];
+  const newP = panels[name];
+
+  oldP.style.setProperty('--leave-x', (-22 * dir) + 'px');
+  oldP.classList.add('leaving');
+
+  $$('.tab-btn').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === name ? 'true' : 'false'));
+  positionNavInd();
+
+  await wait(reduceMotion ? 10 : 250);
+
+  oldP.classList.remove('active', 'leaving');
+  newP.style.setProperty('--enter-x', (22 * dir) + 'px');
+  newP.classList.add('active');
+
+  // stagger anak
+  const reveals = $$('.reveal', newP);
+  reveals.forEach((el, i) => { el.style.setProperty('--d', (i * 65) + 'ms'); });
+
+  state.tab = name;
+  setAccent(name);
+
+  // scroll ke atas
+  try { window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }); }
+  catch (e) { window.scrollTo(0, 0); }
+
+  await wait(reduceMotion ? 10 : 400);
+  state.busyTab = false;
+  positionNavInd();
+  positionSegInd();
+
+  if (name === 'beranda') {
+    statVisible = true;
+    renderStats(true);
+  }
+  if (name === 'aspirasi' && state.seg === 'daftar' && !state.listLoaded) {
+    loadListUmum(false);
+  }
+  if (name === 'event' && !state.eventLoaded) {
+    loadEvents();
+  }
+
+  if (state.pendingTab && state.pendingTab !== name) {
+    const t = state.pendingTab;
+    state.pendingTab = null;
+    switchTab(t);
+  } else {
+    state.pendingTab = null;
+  }
+}
+
+function shakeEvent() {
+  const btn = $('#tab-event');
+  btn.classList.remove('shake');
+  void btn.offsetWidth;
+  btn.classList.add('shake');
+  const lp = $('#lockPop');
+  lp.classList.remove('go');
+  void lp.offsetWidth;
+  lp.classList.add('go');
+}
+
+$$('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const name = btn.dataset.tab;
+    if (!canOpenTab(name)) { shakeEvent(); toast('Belum ada event yang dibuka pengurus MPK'); return; }
+    location.hash = '#' + name;
+  });
+});
+
+// Navigasi papan tombol (panah kiri/kanan)
+$('#navPill').addEventListener('keydown', e => {
+  if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+  const btns = $$('.tab-btn');
+  const idx = btns.indexOf(document.activeElement);
+  if (idx < 0) return;
+  const next = (idx + (e.key === 'ArrowRight' ? 1 : btns.length - 1)) % btns.length;
+  btns[next].focus();
+  e.preventDefault();
+});
+
+/* Routing hash */
+function routeFromHash() {
+  const h = (location.hash || '#beranda').replace('#', '');
+  const name = TAB_ORDER.indexOf(h) >= 0 ? h : 'beranda';
+  if (name === 'event' && !canOpenTab('event')) {
+    toast('Belum ada event yang dibuka pengurus MPK');
+    location.hash = '#beranda';
+    return;
+  }
+  switchTab(name, { force: name === state.tab });
+}
+window.addEventListener('hashchange', routeFromHash);
+
+/* ============================================================
+   ADMIN UI
+   ============================================================ */
+function renderAdminUI() {
+  const fab = $('#fab');
+  const label = $('#adminRowLabel');
+  const desc = $('#adminRowDesc');
+  const action = $('#adminRowAction');
+  const isAdmin = !!state.admin;
+
+  fab.classList.toggle('admin', isAdmin);
+  $('#adminEventBar').hidden = !isAdmin;
+
+  action.textContent = '';
+  if (isAdmin) {
+    label.textContent = 'Admin aktif';
+    desc.textContent = 'Kamu bisa mengelola aspirasi & event.';
+    const badge = document.createElement('span');
+    badge.className = 'admin-badge';
+    badge.textContent = '✅ Admin';
+    const out = document.createElement('button');
+    out.className = 'btn btn-ghost btn-sm';
+    out.textContent = 'Keluar';
+    out.style.marginLeft = '8px';
+    out.addEventListener('click', () => logoutAdmin(false));
+    action.appendChild(badge);
+    action.appendChild(out);
+  } else {
+    label.textContent = 'Masuk sebagai Admin';
+    desc.textContent = 'Kelola aspirasi & event';
+    const b = document.createElement('button');
+    b.className = 'btn btn-blue btn-sm';
+    b.textContent = 'Masuk';
+    b.addEventListener('click', () => openAdminModal());
+    action.appendChild(b);
+  }
+  renderEventNav();
+}
+
+function openSettings() { $('#setOv').classList.add('on'); }
+function closeSettings() { $('#setOv').classList.remove('on'); }
+function openAdminModal() {
+  $('#inpPass').value = '';
+  $('#adminOv').classList.add('on');
+  setTimeout(() => $('#inpPass').focus(), 200);
+}
+function closeAdminModal() { $('#adminOv').classList.remove('on'); }
+
+$('#fab').addEventListener('click', openSettings);
+$('#btnSetClose').addEventListener('click', closeSettings);
+$('#setOv').addEventListener('click', e => { if (e.target === $('#setOv')) closeSettings(); });
+$('#btnAdminCancel').addEventListener('click', closeAdminModal);
+$('#adminOv').addEventListener('click', e => { if (e.target === $('#adminOv')) closeAdminModal(); });
+
+$('#btnAdminLogin').addEventListener('click', async () => {
+  const btn = $('#btnAdminLogin');
+  const pass = $('#inpPass').value;
+  if (!pass) { toast('Kode akses tidak boleh kosong', 'err'); return; }
+  btn.disabled = true;
+  try {
+    await loginAdmin(pass);
+    closeAdminModal();
+    closeSettings();
+    toast('Selamat datang, Admin!', 'ok');
+    renderAdminUI();
+    state.listLoaded = false;
+    loadListUmum(false);
+    state.eventLists = {};
+    if (state.tab === 'event') renderEvents();
+    loadEvents();
+  } catch (e) {
+    toast('Kode akses salah', 'err');
+  } finally {
+    btn.disabled = false;
+  }
+});
+$('#inpPass').addEventListener('keydown', e => { if (e.key === 'Enter') $('#btnAdminLogin').click(); });
+
+$('#btnAddEvent').addEventListener('click', async () => {
+  const btn = $('#btnAddEvent');
+  btn.disabled = true;
+  try {
+    const res = await rpc('admin_create_event', {}, { auth: true });
+    if (!res || res.success !== true) { toast((res && res.error) || 'Gagal membuat event', 'err'); return; }
+    toast('Event baru dibuat', 'ok');
+    await loadEvents();
+  } catch (e) { toast(e.message || 'Gagal membuat event', 'err'); }
+  finally { btn.disabled = false; }
+});
+
+/* ============================================================
+   PENGATURAN: LITE + SUARA
+   ============================================================ */
+function detectLite() {
+  if (reduceMotion) return true;
+  try {
+    if (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) return true;
+    if (navigator.deviceMemory && navigator.deviceMemory <= 4) return true;
+  } catch (e) { /* lanjut */ }
+  return false;
+}
+
+function applyLite(on) {
+  state.lite = on;
+  document.documentElement.classList.toggle('lite', on);
+  $('#liteDesc').textContent = state.liteManual === null ? (on ? 'Otomatis (aktif)' : 'Otomatis (nonaktif)') : 'Diatur manual';
+  const sw = $('#swLite');
+  sw.classList.toggle('on', on);
+  sw.setAttribute('aria-checked', on ? 'true' : 'false');
+  buildDoodles();
+}
+
+function initSettings() {
+  const manual = safeGet(CACHE_PREFIX + 'liteManual', null);
+  state.liteManual = (manual === true || manual === false) ? manual : null;
+  const auto = detectLite();
+  applyLite(state.liteManual === null ? auto : state.liteManual);
+
+  $('#swLite').addEventListener('click', () => {
+    const next = !state.lite;
+    state.liteManual = next;
+    safeSet(CACHE_PREFIX + 'liteManual', next);
+    applyLite(next);
+    toast(next ? 'Mode ringan diaktifkan' : 'Mode ringan dimatikan');
+  });
+
+  const muted = safeGet(CACHE_PREFIX + 'muted', false);
+  state.muted = !!muted;
+  const swS = $('#swSound');
+  swS.classList.toggle('on', !state.muted);
+  swS.setAttribute('aria-checked', state.muted ? 'false' : 'true');
+  $('#soundDesc').textContent = state.muted ? 'Nonaktif' : 'Aktif';
+  swS.addEventListener('click', () => {
+    state.muted = !state.muted;
+    safeSet(CACHE_PREFIX + 'muted', state.muted);
+    swS.classList.toggle('on', !state.muted);
+    swS.setAttribute('aria-checked', state.muted ? 'false' : 'true');
+    $('#soundDesc').textContent = state.muted ? 'Nonaktif' : 'Aktif';
+  });
+}
+
+/* ============================================================
+   C3. KILAU KACA + GLOW TOMBOL
+   ============================================================ */
+let activeGlass = null;
+let glassTimer = null;
+let glassReleaseTimer = null;
+
+function lightGlass(el) {
+  if (activeGlass && activeGlass !== el) activeGlass.classList.remove('lit');
+  activeGlass = el;
+  el.classList.add('lit');
+  clearTimeout(glassTimer);
+  glassTimer = setTimeout(() => {
+    if (activeGlass) { activeGlass.classList.remove('lit'); activeGlass = null; }
+  }, 1200);
+}
+function releaseGlass() {
+  clearTimeout(glassReleaseTimer);
+  glassReleaseTimer = setTimeout(() => {
+    if (activeGlass) { activeGlass.classList.remove('lit'); activeGlass = null; }
+  }, 350);
+}
+
+let pendingXY = null;
+function queueXY(el, x, y) { pendingXY = { el: el, x: x, y: y }; }
+
+function applyXY() {
+  if (!pendingXY) return;
+  const { el, x, y } = pendingXY;
+  pendingXY = null;
+  const r = el.getBoundingClientRect();
+  if (r.width === 0 || r.height === 0) return;
+  const px = ((x - r.left) / r.width) * 100;
+  const py = ((y - r.top) / r.height) * 100;
+  el.style.setProperty('--x', px.toFixed(1) + '%');
+  el.style.setProperty('--y', py.toFixed(1) + '%');
+}
+
+document.addEventListener('pointerdown', e => {
+  const g = e.target.closest && e.target.closest('.glass');
+  if (g) { lightGlass(g); queueXY(g, e.clientX, e.clientY); }
+  const b = e.target.closest && e.target.closest('.btn');
+  if (b) {
+    queueXY(b, e.clientX, e.clientY);
+    b.classList.add('glow-on');
+    clearTimeout(b._glowT);
+  }
+}, { passive: true });
+
+document.addEventListener('pointermove', e => {
+  if (e.pointerType === 'mouse') {
+    const g = e.target.closest && e.target.closest('.glass');
+    if (g) { lightGlass(g); queueXY(g, e.clientX, e.clientY); }
+    else if (activeGlass) { releaseGlass(); }
+  }
+}, { passive: true });
+
+function endPointer(e) {
+  releaseGlass();
+  const b = e.target && e.target.closest && e.target.closest('.btn');
+  if (b) {
+    clearTimeout(b._glowT);
+    b._glowT = setTimeout(() => b.classList.remove('glow-on'), 380);
+  }
+}
+document.addEventListener('pointerup', endPointer, { passive: true });
+document.addEventListener('pointercancel', endPointer, { passive: true });
+document.addEventListener('pointerleave', endPointer, { passive: true });
+
+/* ============================================================
+   C4. BACKGROUND: AURORA + DOODLE + PARALLAX
+   ============================================================ */
+const AURORA_PRESETS = {
+  beranda:  ['#2F9BF4', '#7FC6FF', '#FFD23F'],
+  aspirasi: ['#FFD23F', '#FFE9A3', '#2F9BF4'],
+  event:    ['#3FB871', '#9BE3BB', '#FFD23F'],
+  tentang:  ['#1F3A3D', '#5C7C80', '#F0A0A0']
+};
+
+function buildAurora() {
+  const host = $('#auroraHost');
+  host.textContent = '';
+  Object.keys(AURORA_PRESETS).forEach(tab => {
+    const preset = document.createElement('div');
+    preset.className = 'aurora-preset' + (tab === 'beranda' ? ' on' : '');
+    preset.dataset.tab = tab;
+    const cols = AURORA_PRESETS[tab];
+    [1, 2, 3].forEach(i => {
+      const a = document.createElement('div');
+      a.className = 'aurora a' + i;
+      a.style.setProperty('--c1', cols[0]);
+      a.style.setProperty('--c2', cols[1]);
+      a.style.setProperty('--c3', cols[2]);
+      preset.appendChild(a);
+    });
+    host.appendChild(preset);
+  });
+}
+
+const DOODLE_PATHS = [
+  // buku terbuka
+  '<path d="M3 5.5c3-1.2 5.5-1 9 1v12c-3.5-2-6-2.2-9-1z"/><path d="M21 5.5c-3-1.2-5.5-1-9 1v12c3.5-2 6-2.2 9-1z"/>',
+  // tumpukan buku
+  '<rect x="3" y="16" width="18" height="4" rx="1"/><rect x="4.5" y="11.5" width="15" height="4" rx="1"/><rect x="6" y="7" width="12" height="4" rx="1"/>',
+  // pensil
+  '<path d="M4 20l1-4 10-10 3 3-10 10z"/><path d="M14 6l3 3"/><path d="M15.5 4.5l3 3"/>',
+  // penggaris
+  '<rect x="3" y="9" width="18" height="6" rx="1"/><path d="M7 9v2M11 9v2M15 9v2M19 9v2"/>',
+  // bohlam
+  '<path d="M9 17h6M10 20h4"/><path d="M12 3a6 6 0 0 0-3.5 10.8c.6.5 1 1.2 1 2H14.5c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/>',
+  // topi wisuda
+  '<path d="M2 9l10-4 10 4-10 4z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/>',
+  // kertas berlipat
+  '<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/>',
+  // pesawat kertas
+  '<path d="M3 11l18-7-7 18-3-7z"/><path d="M11 15l10-11"/>',
+  // bintang
+  '<path d="M12 3l2.6 5.6 6.1.8-4.5 4.2 1.1 6-5.3-3-5.3 3 1.1-6L3.3 9.4l6.1-.8z"/>',
+  // atom
+  '<circle cx="12" cy="12" r="1.5"/><ellipse cx="12" cy="12" rx="9" ry="3.5"/><ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(120 12 12)"/>',
+  // kalkulator
+  '<rect x="5" y="3" width="14" height="18" rx="2"/><rect x="8" y="6" width="8" height="3"/><circle cx="9" cy="13" r="1"/><circle cx="12" cy="13" r="1"/><circle cx="15" cy="13" r="1"/><circle cx="9" cy="17" r="1"/><circle cx="12" cy="17" r="1"/><circle cx="15" cy="17" r="1"/>',
+  // globe
+  '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',
+  // penghapus
+  '<path d="M5 16l7-7 6 6-5 5H8z"/><path d="M12 9l3-3 6 6-3 3"/>',
+  // gelembung ucapan
+  '<path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H10l-5 4v-4a3 3 0 0 1-1-3z"/>',
+  // huruf A
+  '<path d="M6 20l6-16 6 16"/><path d="M8.5 14h7"/>',
+  // tanda seru
+  '<path d="M12 4v11"/><circle cx="12" cy="19" r="1.5"/>',
+  // tanda tanya
+  '<path d="M8 8a4 4 0 1 1 5 3.8c-1 .5-1 1.5-1 2.2"/><circle cx="12" cy="19" r="1.3"/>',
+  // clip kertas
+  '<path d="M8 8v9a4 4 0 0 0 8 0V7a2.5 2.5 0 0 0-5 0v9"/>',
+  // spidol
+  '<rect x="9" y="10" width="6" height="10" rx="1"/><path d="M10 10V6h4v4"/><path d="M11 6V3h2v3"/>',
+  // jangka
+  '<path d="M12 3l-4 18M12 3l4 18"/><circle cx="12" cy="3" r="1.5"/><path d="M9 12h6"/>',
+  // jam pasir
+  '<path d="M6 3h12M6 21h12"/><path d="M7 3c0 5 5 6 5 9s-5 4-5 9"/><path d="M17 3c0 5-5 6-5 9s5 4 5 9"/>',
+  // piala
+  '<path d="M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M17 5h3a3 3 0 0 1-3 3"/><path d="M7 5H4a3 3 0 0 0 3 3"/><path d="M9 20h6M12 13v7"/>'
+];
+
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+let doodles = [];
+
+function buildDoodles() {
+  const host = $('#doodleField');
+  host.textContent = '';
+  doodles = [];
+  const total = state.lite ? 14 : 32;
+  const rnd = mulberry32(20240917);
+  const placed = [];
+
+  for (let i = 0; i < total; i++) {
+    const layer = state.lite ? 1 : (i % 3);          // 0 jauh, 1 tengah, 2 dekat
+    const size = layer === 0 ? 24 + rnd() * 18
+              : layer === 1 ? 38 + rnd() * 22
+              : 54 + rnd() * 36;
+    let x, y, tries = 0;
+    do {
+      x = 3 + rnd() * 94;
+      y = 4 + rnd() * 92;
+      tries++;
+    } while (tries < 12 && placed.some(p => Math.abs(p.x - x) < 9 && Math.abs(p.y - y) < 12));
+    placed.push({ x: x, y: y });
+
+    const el = document.createElement('div');
+    el.className = 'doodle l' + layer;
+    el.style.left = x + '%';
+    el.style.top = y + '%';
+    el.style.width = size.toFixed(0) + 'px';
+    el.style.height = size.toFixed(0) + 'px';
+    el.style.setProperty('--r', (rnd() * 60 - 30).toFixed(0) + 'deg');
+
+    const path = DOODLE_PATHS[Math.floor(rnd() * DOODLE_PATHS.length)];
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.innerHTML = path;
+    el.appendChild(svg);
+
+    el._base = { x: x, y: y, layer: layer };
+    el._idle = { phase: rnd() * Math.PI * 2, amp: 4 + rnd() * 8, speed: 0.0006 + rnd() * 0.0009 };
+    el._off = { x: 0, y: 0 };
+    host.appendChild(el);
+    doodles.push(el);
+  }
+}
+
+/* ============================================================
+   C4. LOOP rAF TUNGGAL
+   ============================================================ */
+let loopRunning = false;
+let lastInput = performance.now();
+let idle = false;
+let scrollY = 0;
+let viewH = window.innerHeight;
+let viewW = window.innerWidth;
+let docH = document.documentElement.scrollHeight;
+let pointerNX = 0, pointerNY = 0;
+let scrollDirty = true;
+
+function onResize() {
+  viewH = window.innerHeight;
+  viewW = window.innerWidth;
+  docH = document.documentElement.scrollHeight;
+  scrollDirty = true;
+  positionNavInd();
+  positionSegInd();
+}
+window.addEventListener('resize', onResize, { passive: true });
+window.addEventListener('orientationchange', onResize, { passive: true });
+
+window.addEventListener('scroll', () => {
+  scrollDirty = true;
+  lastInput = performance.now();
+  idle = false;
+  startLoop();
+}, { passive: true });
+
+window.addEventListener('pointermove', e => {
+  pointerNX = (e.clientX / viewW) * 2 - 1;
+  pointerNY = (e.clientY / viewH) * 2 - 1;
+  lastInput = performance.now();
+  idle = false;
+  startLoop();
+}, { passive: true });
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) stopLoop();
+  else { startLoop(); }
+});
+
+/* ---- Kartu ID: fisika bandul ---- */
+const idWrap = $('#idWrap');
+let cardAngle = 0.28;      // rad
+let cardVel = 0;
+let cardDragging = false;
+let cardDragStart = 0;
+let cardDragAngle = 0;
+let cardHoldTimer = 0;
+
+(function initCard() {
+  const stage = $('#stage');
+  idWrap.style.transform = 'translateX(-50%) rotate(' + cardAngle + 'rad)';
+
+  function angleFromEvent(e) {
+    const r = idWrap.getBoundingClientRect();
+    const pivotX = r.left + r.width / 2;
+    const pivotY = r.top;
+    const dx = e.clientX - pivotX;
+    const dy = Math.max(20, e.clientY - pivotY);
+    return Math.atan2(dx, dy);
+  }
+
+  idWrap.addEventListener('pointerdown', e => {
+    cardDragging = true;
+    idWrap.classList.add('grabbing');
+    idWrap.setPointerCapture && idWrap.setPointerCapture(e.pointerId);
+    cardDragStart = cardAngle;
+    cardDragAngle = angleFromEvent(e);
+    cardVel = 0;
+    lastInput = performance.now();
+    idle = false;
+    startLoop();
+    e.preventDefault();
+  });
+
+  idWrap.addEventListener('pointermove', e => {
+    if (!cardDragging) return;
+    const a = angleFromEvent(e);
+    cardAngle = cardDragStart + (a - cardDragAngle);
+    // batasi
+    cardAngle = Math.max(-0.9, Math.min(0.9, cardAngle));
+    idWrap.style.transform = 'translateX(-50%) rotate(' + cardAngle.toFixed(4) + 'rad)';
+    lastInput = performance.now();
+    e.preventDefault();
+  });
+
+  function endDrag() {
+    if (!cardDragging) return;
+    cardDragging = false;
+    idWrap.classList.remove('grabbing');
+    lastInput = performance.now();
+    idle = false;
+    startLoop();
+  }
+  idWrap.addEventListener('pointerup', endDrag);
+  idWrap.addEventListener('pointercancel', endDrag);
+  idWrap.addEventListener('pointerleave', endDrag);
+})();
+
+function stepCard(dt) {
+  if (cardDragging) return false;
+  const k = 0.011;
+  const damp = 0.955;
+  cardVel += -k * cardAngle * (dt / 16.67);
+  cardVel *= damp;
+  cardAngle += cardVel * (dt / 16.67);
+  if (Math.abs(cardAngle) < 0.0008 && Math.abs(cardVel) < 0.0008) {
+    cardAngle = 0; cardVel = 0;
+    idWrap.style.transform = 'translateX(-50%) rotate(0rad)';
+    return false;
+  }
+  idWrap.style.transform = 'translateX(-50%) rotate(' + cardAngle.toFixed(4) + 'rad)';
+  return true;
+}
+
+/* ---- Loop utama ---- */
+let prevT = 0;
+function frame(t) {
+  if (!loopRunning) return;
+  const dt = Math.min(64, t - (prevT || t));
+  prevT = t;
+
+  applyXY();
+
+  // scroll bar
+  if (scrollDirty) {
+    scrollDirty = false;
+    scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+    const max = Math.max(1, docH - viewH);
+    const p = Math.max(0, Math.min(1, scrollY / max));
+    $('#scrollBar').style.width = (p * 100).toFixed(2) + '%';
+  }
+
+  let moving = false;
+
+  // Kartu ID
+  if (!state.introDone) { /* belum mulai */ }
+  else if (stepCard(dt)) moving = true;
+
+  // Aurora drift
+  if (!state.lite && state.introDone) {
+    const presets = $$('.aurora-preset.on .aurora');
+    presets.forEach((a, i) => {
+      const ph = t * 0.00006 + i * 1.7;
+      const tx = Math.sin(ph) * 34;
+      const ty = Math.cos(ph * 1.3) * 26;
+      a.style.transform = 'translate3d(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px,0)';
+    });
+    moving = true;
+  }
+
+  // Doodle parallax
+  if (state.introDone && doodles.length) {
+    const lite = state.lite;
+    for (let i = 0; i < doodles.length; i++) {
+      const el = doodles[i];
+      const base = el._base;
+      const depth = base.layer === 0 ? 0.35 : base.layer === 1 ? 0.7 : 1.25;
+      const scrollShift = lite ? 0 : (-scrollY * 0.03 * depth);
+      const px = lite ? 0 : (pointerNX * 12 * depth);
+      const py = lite ? 0 : (pointerNY * 10 * depth);
+      let iy = 0;
+      if (!lite) {
+        iy = Math.sin(t * el._idle.speed + el._idle.phase) * el._idle.amp;
+      }
+      el.style.transform =
+        'translate3d(' + (px).toFixed(1) + 'px,' + (scrollShift + py + iy).toFixed(1) + 'px,0) ' +
+        'rotate(var(--r,0deg))';
+    }
+    if (!lite) moving = true;
+  }
+
+  // idle check
+  const since = performance.now() - lastInput;
+  if (since > 1200 && !moving && !idle) {
+    idle = true;
+  }
+
+  if (idle && !cardDragging) {
+    // tetap hidupkan loop pelan-pelan kalau kartu masih berayun
+    if (Math.abs(cardAngle) > 0.001 || Math.abs(cardVel) > 0.001) {
+      requestAnimationFrame(frame);
+      return;
+    }
+    loopRunning = false;
+    return;
+  }
+
+  requestAnimationFrame(frame);
+}
+
+function startLoop() {
+  if (loopRunning) return;
+  if (document.hidden) return;
+  if (!state.introDone) return;
+  loopRunning = true;
+  prevT = 0;
+  requestAnimationFrame(frame);
+}
+function stopLoop() { loopRunning = false; }
+
+/* ============================================================
+   CONFETTI
+   ============================================================ */
+const confettiCanvas = $('#confetti');
+const cctx = confettiCanvas.getContext('2d');
+let confettiParts = [];
+let confettiRunning = false;
+
+function sizeConfetti() {
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  confettiCanvas.width = Math.floor(viewW * dpr);
+  confettiCanvas.height = Math.floor(viewH * dpr);
+  confettiCanvas.style.width = viewW + 'px';
+  confettiCanvas.style.height = viewH + 'px';
+  cctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+sizeConfetti();
+window.addEventListener('resize', sizeConfetti, { passive: true });
+
+function fireConfetti() {
+  if (reduceMotion) return;
+  const n = state.lite ? 34 : 90;
+  const colors = ['#2F9BF4', '#FFD23F', '#3FB871', '#1E7FD1', '#FFE9A3'];
+  confettiParts = [];
+  for (let i = 0; i < n; i++) {
+    confettiParts.push({
+      x: viewW / 2 + (Math.random() - 0.5) * 200,
+      y: viewH * 0.42 + (Math.random() - 0.5) * 60,
+      vx: (Math.random() - 0.5) * 9,
+      vy: -6 - Math.random() * 8,
+      g: 0.28 + Math.random() * 0.14,
+      s: 4 + Math.random() * 6,
+      r: Math.random() * Math.PI,
+      vr: (Math.random() - 0.5) * 0.25,
+      c: colors[Math.floor(Math.random() * colors.length)],
+      life: 1
+    });
+  }
+  if (!confettiRunning) {
+    confettiRunning = true;
+    requestAnimationFrame(confettiFrame);
+  }
+}
+let confPrev = 0;
+function confettiFrame(t) {
+  const dt = Math.min(40, t - (confPrev || t));
+  confPrev = t;
+  cctx.clearRect(0, 0, viewW, viewH);
+  let alive = false;
+  for (let i = 0; i < confettiParts.length; i++) {
+    const p = confettiParts[i];
+    p.vy += p.g * (dt / 16.67);
+    p.x += p.vx * (dt / 16.67);
+    p.y += p.vy * (dt / 16.67);
+    p.r += p.vr * (dt / 16.67);
+    if (p.y > viewH * 0.72) p.life -= 0.02 * (dt / 16.67);
+    if (p.life <= 0 || p.y > viewH + 40) continue;
+    alive = true;
+    cctx.save();
+    cctx.globalAlpha = Math.max(0, p.life);
+    cctx.translate(p.x, p.y);
+    cctx.rotate(p.r);
+    cctx.fillStyle = p.c;
+    cctx.fillRect(-p.s / 2, -p.s / 3, p.s, p.s * 0.66);
+    cctx.restore();
+  }
+  if (alive) requestAnimationFrame(confettiFrame);
+  else {
+    confettiRunning = false;
+    cctx.clearRect(0, 0, viewW, viewH);
+  }
+}
+
+/* ============================================================
+   INTRO
+   ============================================================ */
+state.introDone = false;
+const introEl = $('#intro');
+
+function dismissIntro() {
+  if (state.introDone) return;
+  state.introDone = true;
+  introEl.classList.add('out');
+  document.body.classList.remove('locked');
+  setTimeout(() => { if (introEl.parentNode) introEl.parentNode.removeChild(introEl); }, 660);
+  document.removeEventListener('keydown', introKey);
+  // render cache segera
+  renderStats(false);
+  onResize();
+  startLoop();
+}
+function introKey(e) {
+  if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+    e.preventDefault();
+    dismissIntro();
+  }
+}
+introEl.addEventListener('click', dismissIntro);
+introEl.addEventListener('pointerdown', dismissIntro);
+introEl.addEventListener('touchstart', dismissIntro, { passive: true });
+document.addEventListener('keydown', introKey);
+setTimeout(() => introEl && introEl.focus && introEl.focus(), 60);
+
+/* ============================================================
+   PREFETCH & INIT
+   ============================================================ */
+let statVisible = true;
+const statObserver = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) { statVisible = true; renderStats(true); }
+  });
+}, { threshold: 0.2 });
+
+async function prefetch() {
+  // 1) render dari cache dulu
+  const cStats = readCache('stats');
+  if (cStats) { state.stats = cStats; renderStats(false); }
+  const cEvents = readCache('events');
+  if (Array.isArray(cEvents)) {
+    state.events = cEvents;
+    state.eventLoaded = true;
+    renderEventNav();
+    renderEvents();
+  }
+  const cList = readCache('list_null');
+  if (cList && Array.isArray(cList.items)) {
+    state.list = cList.items;
+    state.listOffset = cList.items.length;
+    state.listHasMore = !!cList.hasMore;
+    state.listLoaded = true;
+    rerenderListUmum();
+  } else {
+    skeletonList($('#listUmum'), 4);
+  }
+
+  // 2) ambil data baru paralel
+  await Promise.allSettled([loadStats(), loadEvents(), loadListUmum(false)]);
+}
+
+function boot() {
+  buildAurora();
+  buildDoodles();
+  initSettings();
+
+  if (window.CSS && CSS.supports && (CSS.supports('backdrop-filter', 'url(#liquid)') ||
+      CSS.supports('-webkit-backdrop-filter', 'url(#liquid)'))) {
+    document.documentElement.classList.add('liquid-ok');
+  }
+
+  renderAdminUI();
+  setSeg('isi');
+  setAccent('beranda');
+  requestAnimationFrame(() => {
+    positionNavInd();
+    positionSegInd();
+  });
+
+  try { statObserver.observe($('#statTotal').parentElement); } catch (e) { /* abaikan */ }
+
+  // Prefetch mulai sebelum intro diketuk
+  prefetch();
+
+  // Routing awal (hash langsung ke tab tertentu → tetap tunggu intro)
+  const h = (location.hash || '').replace('#', '');
+  const initial = TAB_ORDER.indexOf(h) >= 0 ? h : 'beranda';
+  if (initial !== 'beranda' && canOpenTab(initial)) {
+    state.tab = 'beranda';
+    switchTab(initial, { force: true });
+  } else if (initial === 'event' && !canOpenTab('event')) {
+    if (location.hash) location.hash = '#beranda';
+  }
+}
+
+window.addEventListener('load', boot);
+window.addEventListener('resize', () => { sizeConfetti(); });
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden && state.introDone) startLoop();
+});
+
+// fallback: kalau 'load' sudah lewat
+if (document.readyState === 'complete') boot();
+
+})();
+</script>
+</body>
+</html>
